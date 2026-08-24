@@ -1,32 +1,33 @@
 ---
-sidebar_position: 8
-title: Security
+sidebar_position: 9
+title: Security & Privacy
 ---
 
-# Security
+# Security & Privacy Architecture
 
-## API Key Storage
+AgentX is designed around strict security, sandboxing, and credential protection principles.
 
-AgentX stores all API keys in your operating system's secure storage:
+---
 
-- **macOS**: Keychain
-- **Windows**: Windows Credential Manager
-- **Linux**: Secret Service / GNOME Keyring / KWallet
+## Native Credential Encryption
 
-Keys are never stored in plain text files.
-Keys are never logged anywhere.
-Keys are always masked when displayed: `sk-pr••••••••••••ABCD`
+- **No Plaintext Secrets**: API keys are never stored in plaintext dotfiles or JSON caches.
+- **OS Keychain Integration**: Credentials are protected via OS-level hardware encryption:
+  - **macOS**: Apple Keychain Services
+  - **Windows**: Windows Credential Manager (DPAPI)
+  - **Linux**: Freedesktop Secret Service (GNOME Keyring / KWallet)
+- **Masked Display**: Keys shown in terminal or logs are truncated: `sk-ant••••••••ABCD`.
 
-## .env.local Files
+---
 
-When AgentX creates a project, it:
-1. Writes credentials to `.env.local` in your project folder
-2. Immediately adds `.env.local` to `.gitignore`
-3. Reminds you never to commit `.env.local`
+## Sandboxed Tool Execution
 
-## Reporting Security Issues
+1. **Workspace Boundary**: AgentX commands run exclusively within your current project root.
+2. **Ignored Files**: Automatically writes sensitive credentials to `.env.local` and validates `.gitignore` before repository commits.
+3. **Local Inference Privacy**: When using Ollama or LM Studio, no code, logs, or prompt tokens leave your local network.
 
-Found a vulnerability? Report it at:
-github.com/SohailKhan0525/agentx-cli/issues
+---
 
-Please do not include sensitive information in public issues.
+## Vulnerability Reporting
+
+Report security issues directly via our [GitHub Security Advisories](https://github.com/SohailKhan0525/agentx-cli/security/advisories) or repository issues.

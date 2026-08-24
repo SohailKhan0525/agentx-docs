@@ -3,39 +3,40 @@ sidebar_position: 4
 title: Local Models
 ---
 
-# Local Models
+# Local & Offline Models
 
-Run AI completely on your machine. Your conversations never leave your device.
+AgentX features first-class support for zero-cost, privacy-first local inference. When using local models, all code generation, planning, and tool calls remain 100% on your machine.
 
-## Supported Providers
+---
 
-- **Ollama** — recommended, automatic install
-- **LM Studio** — GUI app with model browser
-- **Jan** — open source, privacy focused
-- **GPT4All** — easy to use, many models
-- **llama.cpp** — advanced, maximum control
+## Supported Runners
 
-## Quick Start with Ollama
+- **Ollama** (Recommended for macOS, Linux, and Windows)
+- **LM Studio** (GUI runner with visual model download manager)
+- **llama.cpp** (High performance CLI server)
+- **Jan / LocalAI** (Open source local inference servers)
 
-AgentX detects and installs Ollama automatically when you select Local Models.
+---
 
-1. Select **Local Models** as your provider
-2. AgentX scans your hardware (CPU, RAM, GPU)
-3. AgentX recommends the best model for your system
-4. Confirm the download — AgentX installs it automatically
+## Recommended Coding Models
 
-## Hardware Requirements
+| Model | Memory Footprint | Recommended Use Case |
+| :--- | :--- | :--- |
+| **Qwen 2.5 Coder 7B** | ~5 GB VRAM | Best overall coding agent balance |
+| **Qwen 2.5 Coder 14B** | ~10 GB VRAM | High-accuracy architecture & multi-file editing |
+| **DeepSeek-R1 Distill 8B**| ~6 GB VRAM | Deep reasoning, bug diagnostics, and algorithms |
+| **Llama 3.2 3B** | ~3 GB VRAM | Fast lightweight scripts and rapid iteration |
 
-| Model Tier | Min RAM | Recommended GPU |
-|-----------|---------|-----------------|
-| Fast (3B) | 4 GB | 4 GB VRAM |
-| Balanced (7B) | 8 GB | 8 GB VRAM |
-| Quality (14B) | 16 GB | 14 GB VRAM |
+---
 
-## Recommended Models
+## Automated Ollama Setup
 
-| Model | Size | Best For |
-|-------|------|---------|
-| qwen2.5-coder:3b | 1.9 GB | Fast edits |
-| qwen2.5-coder:7b | 4.7 GB | Most tasks |
-| qwen2.5-coder:14b | 9.0 GB | Complex projects |
+AgentX can automatically detect your hardware specs (CPU threads, total RAM, and GPU VRAM) to recommend the optimal quantization level:
+
+```bash
+# Pull recommended model
+ollama run qwen2.5-coder:7b
+
+# Launch AgentX with Ollama
+agentx --provider ollama
+```

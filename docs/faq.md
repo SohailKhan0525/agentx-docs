@@ -1,42 +1,24 @@
 ---
-sidebar_position: 9
+sidebar_position: 10
 title: FAQ
 ---
 
 # Frequently Asked Questions
 
-**Does AgentX send my code to the cloud?**
+### Does AgentX send my code to external servers?
+Only to your explicitly chosen AI provider (e.g. Anthropic, OpenAI, Google) for generation tokens. When using **Local Models (Ollama / LM Studio)**, zero data leaves your local machine.
 
-Only to your chosen AI provider (OpenAI, Anthropic, etc.) for generating responses.
-With Local Models, nothing leaves your machine.
+### How are API keys stored?
+Keys are encrypted using your OS native secure storage (macOS Keychain, Windows Credential Manager, Linux Keyring). They are never saved in cleartext or committed to repositories.
 
-**Does AgentX store my API keys?**
+### What platforms are supported?
+AgentX is fully cross-platform and validated on Windows (Command Prompt, PowerShell, Windows Terminal), macOS (Intel and Apple Silicon), and all major Linux distributions.
 
-In your OS secure storage only (Keychain on Mac, Credential Manager on Windows).
-Never in files. Never logged. Never transmitted to AgentX servers.
+### What frameworks can AgentX generate?
+Next.js 14 (App Router), React + Vite, Astro, and Nuxt 3, with TypeScript enabled by default.
 
-**What Node.js version do I need?**
+### Is AgentX free to use?
+Yes, AgentX CLI is open source under the MIT License. You only pay your respective AI provider for direct API tokens used, or $0.00 when running local models.
 
-Node.js 18 or higher.
-
-**Does it work on Windows?**
-
-Yes. AgentX works on Windows cmd, PowerShell, and Windows Terminal.
-
-**Can I use my own components?**
-
-Yes. AgentX builds entirely with your chosen framework's standard components.
-
-**What if AgentX builds something wrong?**
-
-Tell AgentX in the chat what needs to change. It reads the existing code first and fixes it.
-
-**Is AgentX free?**
-
-AgentX CLI is free and open source.
-You pay for your AI provider (OpenAI, Anthropic, etc.) based on their pricing.
-Local Models are completely free.
-
-**How do I report a bug?**
-
-github.com/SohailKhan0525/agentx-cli/issues
+### Where can I report bugs or suggest features?
+Open an issue on our [GitHub Issues Page](https://github.com/SohailKhan0525/agentx-cli/issues).

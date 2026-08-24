@@ -1,34 +1,22 @@
 ---
-sidebar_position: 7
-title: Supported Services
+sidebar_position: 8
+title: Integrated Services
 ---
 
-# Supported Services
+# Supported Services & Integrations
 
-AgentX can set up and configure these services automatically:
+AgentX can scaffold, configure, and connect third-party backend and infrastructure services automatically.
 
-## Authentication
-Clerk · Supabase Auth · Firebase Auth · NextAuth · Auth0
+---
 
-## Database
-Supabase · Firebase · Appwrite · MongoDB Atlas · PlanetScale · PostgreSQL
+## Integration Directory
 
-## Payments
-Stripe · Lemon Squeezy
-
-## Email
-Resend · SendGrid · Postmark · Mailgun
-
-## File Storage
-Cloudflare R2 · AWS S3 · Uploadthing · Supabase Storage
-
-## Deployment
-Vercel · Netlify · Railway · Fly.io · Cloudflare Pages · Render
-
-## Analytics & Monitoring
-PostHog · Sentry
-
-## Any Other Service
-
-AgentX reads official documentation to integrate any service not listed above.
-Just tell AgentX what you need and it figures out the rest.
+| Category | Supported Integrations |
+| :--- | :--- |
+| **Authentication** | Clerk, Supabase Auth, Firebase Auth, NextAuth, Auth0 |
+| **Databases** | Supabase, Firebase, MongoDB Atlas, Appwrite, PostgreSQL, Prisma, Drizzle |
+| **Payments** | Stripe Checkout & Elements, Lemon Squeezy |
+| **Email & Comms** | Resend, SendGrid, Postmark, Mailgun |
+| **Storage** | Cloudflare R2, AWS S3, Supabase Storage, Uploadthing |
+| **Deployment** | Vercel, Netlify, Cloudflare Pages, Railway, Fly.io, GitHub Pages |
+| **Analytics & Telemetry** | PostHog, Sentry, Google Analytics 4 |

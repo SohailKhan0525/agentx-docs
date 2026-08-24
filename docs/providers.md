@@ -3,39 +3,48 @@ sidebar_position: 3
 title: AI Providers
 ---
 
-# AI Providers
+# AI Providers & Model Configuration
 
-AgentX supports these AI providers:
+AgentX supports cloud LLMs and local offline models. You can switch models and providers on the fly without leaving your session.
 
-## GitHub Copilot
+---
 
-Requires a GitHub account with Copilot subscription.
-Get your token: github.com → Settings → Developer Settings → Personal Access Tokens
+## Supported Providers
 
-## ChatGPT (OpenAI)
+| Provider | Recommended Models | Authentication Method |
+| :--- | :--- | :--- |
+| **Anthropic Claude** | `claude-3-7-sonnet`, `claude-3-5-sonnet`, `claude-3-opus` | `export ANTHROPIC_API_KEY="sk-ant-..."` |
+| **OpenAI** | `gpt-4o`, `gpt-4o-mini`, `o3-mini`, `o1` | `export OPENAI_API_KEY="sk-..."` |
+| **Google Gemini** | `gemini-2.0-flash`, `gemini-1.5-pro` | `export GEMINI_API_KEY="AIza..."` |
+| **GitHub Copilot** | GPT-4o, Claude 3.5 Sonnet | GitHub OAuth / PAT Token |
+| **Groq (Ultra-Fast)** | `llama-3.3-70b-versatile`, `mixtral-8x7b` | `export GROQ_API_KEY="gsk_..."` |
+| **Ollama (Offline)** | `qwen2.5-coder:7b`, `deepseek-r1:8b`, `llama3.2` | Local API endpoint (`http://localhost:11434`) |
+| **LM Studio** | Any loaded GGUF model | Local API endpoint (`http://localhost:1234`) |
 
-Models: gpt-4o, gpt-4o-mini, gpt-4-turbo
+---
 
-Get your API key: platform.openai.com → API Keys
+## Managing Providers in Session
 
-## Google Gemini
+- Switch provider: `/provider`
+- Switch active model: `/model`
+- Check token usage & cost: `/cost`
 
-Models: gemini-2.0-flash, gemini-1.5-pro, gemini-1.5-flash
+---
 
-Get your API key: aistudio.google.com → Get API Key
+## Environment Variables
 
-## Anthropic Claude
+You can pre-configure provider credentials in your `.bashrc`, `.zshrc`, or Windows environment variables:
 
-Models: claude-opus-4-6, claude-sonnet-4-6, claude-haiku-4-5
+```bash
+# Anthropic
+export ANTHROPIC_API_KEY="your-anthropic-key"
 
-Get your API key: console.anthropic.com → API Keys
+# OpenAI
+export OPENAI_API_KEY="your-openai-key"
 
-## Local Models
+# Google Gemini
+export GEMINI_API_KEY="your-gemini-key"
 
-Run AI completely on your machine. No API key needed.
-See [Local Models](/docs/local-models) for setup guide.
-
-## Switching Providers
-
-Type `/provider` in the AgentX chat to switch providers at any time.
-Type `/model` to switch between models of the same provider.
+# Groq
+export GROQ_API_KEY="your-groq-key"
+```
