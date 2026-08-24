@@ -1,27 +1,42 @@
-# AgentX Docs
+<div align="center">
 
-Official documentation website for [AgentX](https://github.com/SohailKhan0525/agentx-cli) — The AI agent that builds production-ready websites from your terminal.
+<img src="./static/img/logo.svg" width="80" height="80" alt="AgentX Logo" />
 
-Hosted at: [https://agentx.js.org](https://agentx.js.org)
+# AgentX Documentation Site
 
-## TO ENABLE THE AI CHATBOT:
-1. Go to [app.biel.ai](https://app.biel.ai)
-2. Create a free account
-3. Create a project pointing to `https://agentx.js.org`
-4. Copy your Project ID
-5. Replace `YOUR_BIEL_PROJECT_ID` in `docusaurus.config.ts`
-6. Commit and push — the chatbot will appear automatically
+**Official Docusaurus v3 documentation for AgentX CLI.**
 
-## Local Development
+[![Live Site](https://img.shields.io/badge/Live%20Docs-GitHub%20Pages-000000?style=for-the-badge&logo=githubpages&labelColor=18181b)](https://sohailkhan0525.github.io/agentx-docs/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-000000?style=for-the-badge&logo=opensourceinitiative&labelColor=18181b)](./LICENSE)
+
+</div>
+
+---
+
+## 🌟 Features
+
+- **Ultra-Premium Monochromatic Design**: Custom dark & light theme system tailored with modern typography and sleek glassmorphic components.
+- **Interactive Landing Page**: Hero terminal preview, real-time GitHub stars & npm version counts, and click-to-copy install commands.
+- **9 Comprehensive Documentation Pages**: Guides covering Quickstart, Installation, AI Providers, Local Models, Commands, Stacks, Services, Security, and FAQs.
+- **Integrated AI Chatbot**: Built-in Biel.ai documentation assistant.
+- **AI Knowledge Base**: Static `llms.txt` and `llms-full.txt` for LLM ingestion.
+
+## 🛠️ Local Development
 
 ```bash
+# Install dependencies
 npm install
+
+# Start local dev server
 npm start
-```
 
-## Production Build
-
-```bash
+# Build static production bundle
 npm run build
+
+# Preview build locally
 npm run serve
 ```
+
+## 🚀 Deployment
+
+The site is automatically built and deployed to **GitHub Pages** on every push to `main` via GitHub Actions.

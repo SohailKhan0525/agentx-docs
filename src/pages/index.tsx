@@ -246,7 +246,7 @@ function CTASection({ stars }: { stars: number | null }) {
 export default function Home(): React.JSX.Element {
   const {siteConfig} = useDocusaurusContext()
   const [stars, setStars] = useState<number | null>(null)
-  const [version, setVersion] = useState<string>('2.0.5')
+  const [version, setVersion] = useState<string>('2.0.6')
 
   useEffect(() => {
     // 1. Fetch real-time GitHub Stars
