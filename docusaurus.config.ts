@@ -7,8 +7,8 @@ const config: Config = {
   tagline: 'The AI agent that builds production-ready websites from your terminal',
   favicon: 'img/logo.png',
 
-  url: 'https://sohailkhan0525.github.io',
-  baseUrl: '/agentx-docs/',
+  url: 'https://agentx.js.org',
+  baseUrl: '/',
 
   organizationName: 'SohailKhan0525',
   projectName: 'agentx-docs',
