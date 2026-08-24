@@ -78,7 +78,7 @@ function HeroSection({ stars, version }: { stars: number | null, version: string
           Describe your website in plain English. AgentX plans, builds, deploys, and ships it.
           Not a demo. Not an MVP. A real website, live on the internet.
         </p>
-        <div className={styles.heroInstall} onClick={copyHero} title="Click to copy">
+        <div className={styles.heroInstall} onClick={copyHero} title="Click to copy command">
           <code className={styles.installCommand}>
             <span>{heroCmd}</span>
             <span className={styles.copyIndicator}>{copied ? '✓ Copied!' : '📋'}</span>
@@ -92,7 +92,7 @@ function HeroSection({ stars, version }: { stars: number | null, version: string
             className={styles.secondaryBtn}
             to="https://github.com/SohailKhan0525/agentx-cli"
           >
-            ⭐ Star on GitHub {stars !== null ? `(${stars})` : ''}
+            ⭐ Star on GitHub {stars !== null && stars > 0 ? `(${stars})` : ''}
           </Link>
         </div>
         <div className={styles.heroPlatforms}>
@@ -235,7 +235,7 @@ function CTASection({ stars }: { stars: number | null }) {
             className={styles.secondaryBtn}
             to="https://github.com/SohailKhan0525/agentx-cli"
           >
-            ⭐ Star on GitHub {stars !== null ? `(${stars})` : ''}
+            ⭐ Star on GitHub {stars !== null && stars > 0 ? `(${stars})` : ''}
           </Link>
         </div>
       </div>
@@ -246,10 +246,10 @@ function CTASection({ stars }: { stars: number | null }) {
 export default function Home(): React.JSX.Element {
   const {siteConfig} = useDocusaurusContext()
   const [stars, setStars] = useState<number | null>(null)
-  const [version, setVersion] = useState<string>('2.0.4')
+  const [version, setVersion] = useState<string>('2.0.5')
 
   useEffect(() => {
-    // Fetch GitHub stars
+    // 1. Fetch real-time GitHub Stars
     fetch('https://api.github.com/repos/SohailKhan0525/agentx-cli')
       .then(res => res.json())
       .then(data => {
@@ -259,7 +259,7 @@ export default function Home(): React.JSX.Element {
       })
       .catch(() => {})
 
-    // Fetch npm version
+    // 2. Fetch real-time npm version
     fetch('https://registry.npmjs.org/@agent-qofeno/agentx-cli/latest')
       .then(res => res.json())
       .then(data => {
