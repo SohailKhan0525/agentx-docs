@@ -7,7 +7,6 @@
 **Official Docusaurus v3 documentation for AgentX CLI.**
 
 [![Live Site](https://img.shields.io/badge/Live%20Docs-GitHub%20Pages-000000?style=for-the-badge&logo=githubpages&logoColor=white&labelColor=18181b)](https://sohailkhan0525.github.io/agentx-docs/)
-[![Font Awesome](https://img.shields.io/badge/Font_Awesome-Icons-000000?style=for-the-badge&logo=fontawesome&logoColor=white&labelColor=18181b)](https://fontawesome.com)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Docusaurus_v3-000000?style=for-the-badge&logo=typescript&logoColor=white&labelColor=18181b)](https://docusaurus.io)
 [![License: MIT](https://img.shields.io/badge/License-MIT-000000?style=for-the-badge&logo=opensourceinitiative&logoColor=white&labelColor=18181b)](./LICENSE)
 
