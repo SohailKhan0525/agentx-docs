@@ -4,52 +4,52 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import Layout from '@theme/Layout'
 import styles from './index.module.css'
 
-// Feature list
+// Feature list with FontAwesome icon classes
 const features = [
   {
-    icon: '⚡',
+    iconClass: 'fa-solid fa-compass-drafting',
     title: 'Plans Before Acting',
     description: "Like Claude Code, AgentX writes an explicit plan and gets your confirmation before building anything.",
   },
   {
-    icon: '📖',
+    iconClass: 'fa-solid fa-book-open-reader',
     title: 'Reads Code First',
     description: "Never edits files it hasn't read. Understands your codebase before making any changes.",
   },
   {
-    icon: '🛠',
+    iconClass: 'fa-solid fa-screwdriver-wrench',
     title: 'Real Tools',
     description: "Actually runs commands, writes files, and makes API calls. Never just describes what it would do.",
   },
   {
-    icon: '🔄',
+    iconClass: 'fa-solid fa-arrows-rotate',
     title: 'Iterates Until Done',
     description: "Fixes its own TypeScript errors and build failures. Doesn't stop until the website works.",
   },
   {
-    icon: '🚀',
+    iconClass: 'fa-solid fa-cloud-arrow-up',
     title: 'Deploys Live',
     description: "Pushes to GitHub and deploys to Vercel, Netlify, Railway, or Fly.io automatically.",
   },
   {
-    icon: '🔒',
+    iconClass: 'fa-solid fa-shield-halved',
     title: 'Secure By Default',
     description: "API keys stored in OS secure storage. Never in plain text files. Never logged.",
   },
 ]
 
 const providers = [
-  { name: 'GitHub Copilot', icon: '🐙' },
-  { name: 'ChatGPT', icon: '🤖' },
-  { name: 'Google Gemini', icon: '✨' },
-  { name: 'Claude', icon: '🧠' },
-  { name: 'Local Models', icon: '💻' },
+  { name: 'GitHub Copilot', iconClass: 'fa-brands fa-github' },
+  { name: 'ChatGPT', iconClass: 'fa-solid fa-brain' },
+  { name: 'Google Gemini', iconClass: 'fa-brands fa-google' },
+  { name: 'Claude', iconClass: 'fa-solid fa-robot' },
+  { name: 'Local Models', iconClass: 'fa-solid fa-laptop-code' },
 ]
 
 const installMethods = [
-  { id: 'npm', label: 'npm', command: 'npm install -g @agent-qofeno/agentx-cli' },
-  { id: 'brew', label: 'Homebrew', command: 'brew tap SohailKhan0525/agentx && brew install agentx' },
-  { id: 'jsr', label: 'JSR', command: 'npx jsr add @agent-qofeno/agentx-cli' },
+  { id: 'npm', label: 'npm', iconClass: 'fa-brands fa-npm', command: 'npm install -g @agent-qofeno/agentx-cli' },
+  { id: 'brew', label: 'Homebrew', iconClass: 'fa-solid fa-beer-mug-empty', command: 'brew tap SohailKhan0525/agentx && brew install agentx' },
+  { id: 'jsr', label: 'JSR', iconClass: 'fa-solid fa-cubes', command: 'npx jsr add @agent-qofeno/agentx-cli' },
 ]
 
 function HeroSection({ stars, version }: { stars: number | null, version: string }) {
@@ -68,7 +68,8 @@ function HeroSection({ stars, version }: { stars: number | null, version: string
     <div className={styles.hero}>
       <div className={styles.heroInner}>
         <div className={styles.heroBadge}>
-          <span>🚀 Now in v{version} — Production Ready</span>
+          <i className="fa-solid fa-rocket" style={{ marginRight: '8px' }} />
+          <span>Now in v{version} — Production Ready</span>
         </div>
         <h1 className={styles.heroTitle}>
           The AI agent that builds<br />
@@ -81,22 +82,32 @@ function HeroSection({ stars, version }: { stars: number | null, version: string
         <div className={styles.heroInstall} onClick={copyHero} title="Click to copy command">
           <code className={styles.installCommand}>
             <span>{heroCmd}</span>
-            <span className={styles.copyIndicator}>{copied ? '✓ Copied!' : '📋'}</span>
+            <span className={styles.copyIndicator}>
+              {copied ? (
+                <>
+                  <i className="fa-solid fa-check" style={{ color: '#22c55e', marginRight: '6px' }} />
+                  Copied!
+                </>
+              ) : (
+                <i className="fa-regular fa-copy" />
+              )}
+            </span>
           </code>
         </div>
         <div className={styles.heroActions}>
           <Link className={styles.primaryBtn} to="/docs/intro">
-            Get Started →
+            Get Started <i className="fa-solid fa-arrow-right" style={{ marginLeft: '6px' }} />
           </Link>
           <Link
             className={styles.secondaryBtn}
             to="https://github.com/SohailKhan0525/agentx-cli"
           >
-            ⭐ Star on GitHub {stars !== null && stars > 0 ? `(${stars})` : ''}
+            <i className="fa-brands fa-github" style={{ marginRight: '8px' }} />
+            Star on GitHub {stars !== null && stars > 0 ? `(${stars})` : ''}
           </Link>
         </div>
         <div className={styles.heroPlatforms}>
-          <span>Works on</span>
+          <span><i className="fa-solid fa-circle-check" style={{ marginRight: '6px' }} /> Works on</span>
           <strong>Windows</strong>
           <span>·</span>
           <strong>macOS</strong>
@@ -120,7 +131,9 @@ function FeaturesSection() {
         <div className={styles.featureGrid}>
           {features.map((f, i) => (
             <div key={i} className={styles.featureCard}>
-              <div className={styles.featureIcon}>{f.icon}</div>
+              <div className={styles.featureIcon}>
+                <i className={f.iconClass} />
+              </div>
               <h3>{f.title}</h3>
               <p>{f.description}</p>
             </div>
@@ -139,7 +152,7 @@ function ProvidersSection() {
         <div className={styles.providerList}>
           {providers.map((p, i) => (
             <div key={i} className={styles.providerChip}>
-              <span>{p.icon}</span>
+              <i className={p.iconClass} style={{ marginRight: '8px' }} />
               <span>{p.name}</span>
             </div>
           ))}
@@ -155,11 +168,11 @@ function ProvidersSection() {
 
 function HowItWorksSection() {
   const steps = [
-    { num: '01', title: 'Describe your website', desc: 'Tell AgentX what you want to build in plain English. No technical knowledge required.' },
-    { num: '02', title: 'AgentX plans it', desc: 'See the full plan — every page, every service, every integration — before any code is written.' },
-    { num: '03', title: 'You confirm', desc: 'Review the plan. Request changes. AgentX only builds when you say go.' },
-    { num: '04', title: 'AgentX builds', desc: 'Every page, every API route, every integration. Real code. No placeholders.' },
-    { num: '05', title: 'It deploys live', desc: 'Pushed to GitHub, deployed to your platform, live URL in your terminal.' },
+    { num: '01', iconClass: 'fa-solid fa-comment-dots', title: 'Describe your website', desc: 'Tell AgentX what you want to build in plain English. No technical knowledge required.' },
+    { num: '02', iconClass: 'fa-solid fa-compass-drafting', title: 'AgentX plans it', desc: 'See the full plan — every page, every service, every integration — before any code is written.' },
+    { num: '03', iconClass: 'fa-solid fa-circle-check', title: 'You confirm', desc: 'Review the plan. Request changes. AgentX only builds when you say go.' },
+    { num: '04', iconClass: 'fa-solid fa-code', title: 'AgentX builds', desc: 'Every page, every API route, every integration. Real code. No placeholders.' },
+    { num: '05', iconClass: 'fa-solid fa-cloud-arrow-up', title: 'It deploys live', desc: 'Pushed to GitHub, deployed to your platform, live URL in your terminal.' },
   ]
 
   return (
@@ -171,7 +184,10 @@ function HowItWorksSection() {
             <div key={i} className={styles.step}>
               <div className={styles.stepNum}>{s.num}</div>
               <div>
-                <h3>{s.title}</h3>
+                <h3>
+                  <i className={s.iconClass} style={{ marginRight: '8px', opacity: 0.75 }} />
+                  {s.title}
+                </h3>
                 <p>{s.desc}</p>
               </div>
             </div>
@@ -206,9 +222,22 @@ function InstallSection() {
               title="Click to copy command"
             >
               <div className={styles.installCardHeader}>
-                <div className={styles.installLabel}>{m.label}</div>
+                <div className={styles.installLabel}>
+                  <i className={m.iconClass} style={{ marginRight: '8px' }} />
+                  {m.label}
+                </div>
                 <span className={styles.cardCopyTag}>
-                  {copiedId === m.id ? '✓ Copied!' : 'Click to copy'}
+                  {copiedId === m.id ? (
+                    <>
+                      <i className="fa-solid fa-check" style={{ color: '#22c55e', marginRight: '4px' }} />
+                      Copied!
+                    </>
+                  ) : (
+                    <>
+                      <i className="fa-regular fa-copy" style={{ marginRight: '4px' }} />
+                      Click to copy
+                    </>
+                  )}
                 </span>
               </div>
               <code className={styles.installCode}>{m.command}</code>
@@ -229,13 +258,14 @@ function CTASection({ stars }: { stars: number | null }) {
         <p>Install AgentX and describe what you want to build.</p>
         <div className={styles.ctaActions}>
           <Link className={styles.primaryBtn} to="/docs/intro">
-            Read the docs →
+            Read the docs <i className="fa-solid fa-arrow-right" style={{ marginLeft: '6px' }} />
           </Link>
           <Link
             className={styles.secondaryBtn}
             to="https://github.com/SohailKhan0525/agentx-cli"
           >
-            ⭐ Star on GitHub {stars !== null && stars > 0 ? `(${stars})` : ''}
+            <i className="fa-brands fa-github" style={{ marginRight: '8px' }} />
+            Star on GitHub {stars !== null && stars > 0 ? `(${stars})` : ''}
           </Link>
         </div>
       </div>
