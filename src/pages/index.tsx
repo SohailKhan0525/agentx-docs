@@ -1,217 +1,116 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Link from '@docusaurus/Link'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import Layout from '@theme/Layout'
 import styles from './index.module.css'
 
+// Feature list
 const features = [
   {
     icon: '⚡',
-    tag: 'INTELLIGENT PLANNING',
     title: 'Plans Before Acting',
-    description: 'AgentX creates an explicit, step-by-step architecture specification and verifies all requirements with you before writing code.',
+    description: "Like Claude Code, AgentX writes an explicit plan and gets your confirmation before building anything.",
   },
   {
-    icon: '🔍',
-    tag: 'CONTEXT-AWARE',
+    icon: '📖',
     title: 'Reads Code First',
-    description: 'Never blindly edits files. Analyzes component structures, dependencies, and design systems first for flawless cohesion.',
+    description: "Never edits files it hasn't read. Understands your codebase before making any changes.",
   },
   {
-    icon: '🛠️',
-    tag: 'REAL EXECUTION',
-    title: 'Real Tools & Terminal CLI',
-    description: 'Spawns processes, manages files, executes tests, installs packages, and configures databases with native performance.',
+    icon: '🛠',
+    title: 'Real Tools',
+    description: "Actually runs commands, writes files, and makes API calls. Never just describes what it would do.",
   },
   {
     icon: '🔄',
-    tag: 'SELF-HEALING',
-    title: 'Iterates Until Working',
-    description: 'Automatically analyzes compiler output, fixes TypeScript diagnostics and resolves build errors until the app ships.',
+    title: 'Iterates Until Done',
+    description: "Fixes its own TypeScript errors and build failures. Doesn't stop until the website works.",
   },
   {
     icon: '🚀',
-    tag: 'INSTANT DEPLOY',
-    title: 'Deploys Live in Seconds',
-    description: 'Initializes Git, commits atomic diffs, pushes to GitHub and triggers continuous deployments on Vercel, Netlify, or Railway.',
+    title: 'Deploys Live',
+    description: "Pushes to GitHub and deploys to Vercel, Netlify, Railway, or Fly.io automatically.",
   },
   {
     icon: '🔒',
-    tag: 'ZERO-LEAK SECURITY',
-    title: 'Hardware Secure Storage',
-    description: 'API keys stored exclusively in OS secure enclaves (macOS Keychain, Windows Credential Manager). Never plain text.',
+    title: 'Secure By Default',
+    description: "API keys stored in OS secure storage. Never in plain text files. Never logged.",
   },
 ]
 
 const providers = [
-  { name: 'GitHub Copilot', tier: 'CLI & IDE' },
-  { name: 'ChatGPT (OpenAI)', tier: 'GPT-4o / GPT-4.5' },
-  { name: 'Anthropic Claude', tier: 'Sonnet 4.6 / Opus' },
-  { name: 'Google Gemini', tier: '2.0 Flash / Pro' },
-  { name: 'Local Ollama', tier: '100% Offline / Free' },
-  { name: 'LM Studio / Jan', tier: 'Local GPU / Private' },
+  { name: 'GitHub Copilot', icon: '🐙' },
+  { name: 'ChatGPT', icon: '🤖' },
+  { name: 'Google Gemini', icon: '✨' },
+  { name: 'Claude', icon: '🧠' },
+  { name: 'Local Models', icon: '💻' },
 ]
 
-const stacks = [
-  { name: 'Next.js 14', desc: 'App Router, SSR, Server Actions, Tailwind' },
-  { name: 'React + Vite', desc: 'Ultra-fast SPA, HMR, Client-side routes' },
-  { name: 'Astro', desc: 'Content-driven, Islands architecture, 100% SEO' },
-  { name: 'Nuxt 3', desc: 'Vue 3, Fullstack SSR, Nitro engine' },
+const installMethods = [
+  { label: 'npm', command: 'npm install -g @agent-qofeno/agentx-cli' },
+  { label: 'Homebrew', command: 'brew tap SohailKhan0525/agentx && brew install agentx' },
+  { label: 'JSR', command: 'npx jsr add @agent-qofeno/agentx-cli' },
 ]
 
 function HeroSection() {
-  const [copied, setCopied] = useState(false)
-  const installCmd = 'npm install -g @agent-qofeno/agentx-cli'
-
-  const copyCommand = () => {
-    navigator.clipboard.writeText(installCmd)
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
-  }
-
   return (
-    <div className={styles.heroWrapper}>
-      <div className={styles.heroGlow}></div>
+    <div className={styles.hero}>
       <div className={styles.heroInner}>
         <div className={styles.heroBadge}>
-          <span className={styles.heroBadgePulse}></span>
-          <span>AgentX v2.0.4 is live on npm & JSR</span>
+          <span>🚀 Now in v2.0 — Production Ready</span>
         </div>
-
         <h1 className={styles.heroTitle}>
           The AI agent that builds<br />
-          <span className={styles.heroGradientText}>production websites</span>
+          <span className={styles.heroHighlight}>real websites</span>
         </h1>
-
         <p className={styles.heroSubtitle}>
-          Describe your application in plain English. AgentX plans the architecture, writes full-stack code, tests components, and deploys it live to the web.
+          Describe your website in plain English. AgentX plans, builds, deploys, and ships it.
+          Not a demo. Not an MVP. A real website, live on the internet.
         </p>
-
-        <div className={styles.commandBox} onClick={copyCommand} role="button" tabIndex={0}>
-          <span className={styles.commandPrompt}>$</span>
-          <code className={styles.commandText}>{installCmd}</code>
-          <button className={styles.copyBtn} aria-label="Copy install command">
-            {copied ? '✓ Copied!' : 'Copy'}
-          </button>
+        <div className={styles.heroInstall}>
+          <code className={styles.installCommand}>
+            npm install -g @agent-qofeno/agentx-cli
+          </code>
         </div>
-
-        <div className={styles.heroCtaGroup}>
-          <Link className={styles.primaryCta} to="/docs/intro">
-            Get Started Documentation →
+        <div className={styles.heroActions}>
+          <Link className={styles.primaryBtn} to="/docs/intro">
+            Get Started →
           </Link>
           <Link
-            className={styles.secondaryCta}
-            href="https://github.com/SohailKhan0525/agentx-cli"
+            className={styles.secondaryBtn}
+            to="https://github.com/SohailKhan0525/agentx-cli"
           >
-            GitHub Repository
+            ⭐ Star on GitHub
           </Link>
         </div>
-
-        <div className={styles.platformMeta}>
-          <span>Platforms:</span>
-          <strong>macOS (Apple Silicon & Intel)</strong>
+        <div className={styles.heroPlatforms}>
+          <span>Works on</span>
+          <strong>Windows</strong>
           <span>·</span>
-          <strong>Windows 10/11</strong>
+          <strong>macOS</strong>
           <span>·</span>
-          <strong>Linux (x64 & ARM64)</strong>
+          <strong>Linux</strong>
         </div>
       </div>
     </div>
   )
 }
 
-function TerminalPreview() {
-  return (
-    <section className={styles.terminalSection}>
-      <div className={styles.terminalContainer}>
-        <div className={styles.terminalHeader}>
-          <div className={styles.terminalDots}>
-            <span className={styles.dotRed}></span>
-            <span className={styles.dotYellow}></span>
-            <span className={styles.dotGreen}></span>
-          </div>
-          <div className={styles.terminalTitle}>agentx — v2.0.4 — React Ink TUI</div>
-          <div className={styles.terminalRight}>Node 18+</div>
-        </div>
-        <div className={styles.terminalBody}>
-          <div className={styles.tuiStatusBar}>
-            <span className={styles.tuiBrand}>AgentX</span>
-            <span>·</span>
-            <span className={styles.tuiModel}>claude-sonnet-4-6</span>
-            <span>·</span>
-            <span className={styles.tuiTokens}>1,420 tok</span>
-            <span>·</span>
-            <span className={styles.tuiCost}>$0.004</span>
-            <span>·</span>
-            <span className={styles.tuiHelp}>/help</span>
-          </div>
-          <div className={styles.tuiConversation}>
-            <p className={styles.tuiUser}>
-              <span className={styles.tuiPromptChar}>❯</span> Build a modern SaaS landing page for an AI developer analytics tool with Next.js 14, Tailwind, and Supabase auth.
-            </p>
-            <p className={styles.tuiAgent}>
-              <span className={styles.tuiAgentBadge}>AgentX</span> <strong>Plan created:</strong> 6 components, 2 auth routes, dark monochrome design system. Generating project scaffold...
-            </p>
-            <div className={styles.tuiProgress}>
-              <span className={styles.tuiCheck}>✓</span> Scaffolded Next.js 14 App Router project<br />
-              <span className={styles.tuiCheck}>✓</span> Implemented Auth middleware & Supabase client<br />
-              <span className={styles.tuiCheck}>✓</span> Verified TypeScript diagnostics (0 errors)<br />
-              <span className={styles.tuiCheck}>✓</span> Deployed to Vercel: <span className={styles.tuiLink}>https://analytics-preview.vercel.app</span>
-            </div>
-          </div>
-          <div className={styles.tuiInputBox}>
-            <span>❯ Type instructions or /command...</span>
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
-
 function FeaturesSection() {
   return (
-    <section className={styles.featuresSection}>
-      <div className={styles.sectionContainer}>
-        <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionHeading}>Engineered for Real-World Development</h2>
-          <p className={styles.sectionSubheading}>
-            Unlike generic chat interfaces, AgentX behaves like an experienced staff engineer in your terminal.
-          </p>
-        </div>
-
+    <section className={styles.features}>
+      <div className={styles.sectionInner}>
+        <h2 className={styles.sectionTitle}>Like Claude Code, but for websites</h2>
+        <p className={styles.sectionSubtitle}>
+          AgentX thinks and works the same way — plans first, reads before editing,
+          uses real tools, and iterates until everything works.
+        </p>
         <div className={styles.featureGrid}>
-          {features.map((item, idx) => (
-            <div key={idx} className={styles.featureCard}>
-              <div className={styles.cardTop}>
-                <span className={styles.featureIcon}>{item.icon}</span>
-                <span className={styles.featureTag}>{item.tag}</span>
-              </div>
-              <h3 className={styles.featureTitle}>{item.title}</h3>
-              <p className={styles.featureDesc}>{item.description}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
-
-function StacksSection() {
-  return (
-    <section className={styles.stacksSection}>
-      <div className={styles.sectionContainer}>
-        <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionHeading}>First-Class Framework Support</h2>
-          <p className={styles.sectionSubheading}>
-            AgentX writes idiomatic, strictly-typed code according to current framework standards.
-          </p>
-        </div>
-
-        <div className={styles.stackGrid}>
-          {stacks.map((s, idx) => (
-            <div key={idx} className={styles.stackCard}>
-              <h3 className={styles.stackTitle}>{s.name}</h3>
-              <p className={styles.stackDesc}>{s.desc}</p>
+          {features.map((f, i) => (
+            <div key={i} className={styles.featureCard}>
+              <div className={styles.featureIcon}>{f.icon}</div>
+              <h3>{f.title}</h3>
+              <p>{f.description}</p>
             </div>
           ))}
         </div>
@@ -222,20 +121,47 @@ function StacksSection() {
 
 function ProvidersSection() {
   return (
-    <section className={styles.providersSection}>
-      <div className={styles.sectionContainer}>
-        <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionHeading}>Choose Your Intelligence</h2>
-          <p className={styles.sectionSubheading}>
-            Switch between cloud frontier models and local private offline LLMs seamlessly with <code>/model</code> and <code>/provider</code>.
-          </p>
+    <section className={styles.providers}>
+      <div className={styles.sectionInner}>
+        <h2 className={styles.sectionTitle}>Works with every AI provider</h2>
+        <div className={styles.providerList}>
+          {providers.map((p, i) => (
+            <div key={i} className={styles.providerChip}>
+              <span>{p.icon}</span>
+              <span>{p.name}</span>
+            </div>
+          ))}
         </div>
+        <p className={styles.providerNote}>
+          Including local models via Ollama, LM Studio, Jan, GPT4All, and llama.cpp.
+          Your conversations stay on your machine.
+        </p>
+      </div>
+    </section>
+  )
+}
 
-        <div className={styles.providerGrid}>
-          {providers.map((p, idx) => (
-            <div key={idx} className={styles.providerCard}>
-              <div className={styles.providerName}>{p.name}</div>
-              <div className={styles.providerTier}>{p.tier}</div>
+function HowItWorksSection() {
+  const steps = [
+    { num: '01', title: 'Describe your website', desc: 'Tell AgentX what you want to build in plain English. No technical knowledge required.' },
+    { num: '02', title: 'AgentX plans it', desc: 'See the full plan — every page, every service, every integration — before any code is written.' },
+    { num: '03', title: 'You confirm', desc: 'Review the plan. Request changes. AgentX only builds when you say go.' },
+    { num: '04', title: 'AgentX builds', desc: 'Every page, every API route, every integration. Real code. No placeholders.' },
+    { num: '05', title: 'It deploys live', desc: 'Pushed to GitHub, deployed to your platform, live URL in your terminal.' },
+  ]
+
+  return (
+    <section className={styles.howItWorks}>
+      <div className={styles.sectionInner}>
+        <h2 className={styles.sectionTitle}>How it works</h2>
+        <div className={styles.steps}>
+          {steps.map((s, i) => (
+            <div key={i} className={styles.step}>
+              <div className={styles.stepNum}>{s.num}</div>
+              <div>
+                <h3>{s.title}</h3>
+                <p>{s.desc}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -244,23 +170,40 @@ function ProvidersSection() {
   )
 }
 
+function InstallSection() {
+  return (
+    <section className={styles.install}>
+      <div className={styles.sectionInner}>
+        <h2 className={styles.sectionTitle}>Get started in seconds</h2>
+        <div className={styles.installGrid}>
+          {installMethods.map((m, i) => (
+            <div key={i} className={styles.installCard}>
+              <div className={styles.installLabel}>{m.label}</div>
+              <code className={styles.installCode}>{m.command}</code>
+            </div>
+          ))}
+        </div>
+        <p className={styles.installReq}>Requires Node.js 18 or higher</p>
+      </div>
+    </section>
+  )
+}
+
 function CTASection() {
   return (
-    <section className={styles.ctaSection}>
-      <div className={styles.ctaCard}>
-        <h2 className={styles.ctaHeading}>Ready to Ship Your Next Idea?</h2>
-        <p className={styles.ctaSub}>
-          Install AgentX globally with npm and start building from your command line in seconds.
-        </p>
-        <div className={styles.ctaButtonGroup}>
-          <Link className={styles.primaryCta} to="/docs/intro">
-            Read Getting Started →
+    <section className={styles.cta}>
+      <div className={styles.sectionInner}>
+        <h2>Ready to ship your website?</h2>
+        <p>Install AgentX and describe what you want to build.</p>
+        <div className={styles.ctaActions}>
+          <Link className={styles.primaryBtn} to="/docs/intro">
+            Read the docs →
           </Link>
           <Link
-            className={styles.secondaryCta}
-            href="https://npmjs.com/package/@agent-qofeno/agentx-cli"
+            className={styles.secondaryBtn}
+            to="https://github.com/SohailKhan0525/agentx-cli"
           >
-            View on npm
+            ⭐ Star on GitHub
           </Link>
         </div>
       </div>
@@ -273,13 +216,13 @@ export default function Home(): React.JSX.Element {
   return (
     <Layout
       title={siteConfig.title}
-      description="The AI agent that builds production-ready websites from your terminal."
+      description="The AI agent that builds production-ready websites from your terminal"
     >
       <HeroSection />
-      <TerminalPreview />
       <FeaturesSection />
-      <StacksSection />
       <ProvidersSection />
+      <HowItWorksSection />
+      <InstallSection />
       <CTASection />
     </Layout>
   )

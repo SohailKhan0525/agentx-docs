@@ -2,7 +2,7 @@
 
 Official documentation website for [AgentX](https://github.com/SohailKhan0525/agentx-cli) — The AI agent that builds production-ready websites from your terminal.
 
-Hosted at: [https://agentx.js.org](https://agentx.js.org) (and [https://SohailKhan0525.github.io/agentx-docs/](https://SohailKhan0525.github.io/agentx-docs/))
+Hosted at: [https://agentx.js.org](https://agentx.js.org)
 
 ## TO ENABLE THE AI CHATBOT:
 1. Go to [app.biel.ai](https://app.biel.ai)

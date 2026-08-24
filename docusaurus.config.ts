@@ -2,22 +2,20 @@ import type {Config} from '@docusaurus/types'
 import type * as Preset from '@docusaurus/preset-classic'
 import {themes as prismThemes} from 'prism-react-renderer'
 
-const isCustomDomain = process.env.CUSTOM_DOMAIN === 'true';
-
 const config: Config = {
   title: 'AgentX',
   tagline: 'The AI agent that builds production-ready websites from your terminal',
   favicon: 'img/favicon.ico',
 
-  url: isCustomDomain ? 'https://agentx.js.org' : 'https://sohailkhan0525.github.io',
-  baseUrl: isCustomDomain ? '/' : '/agentx-docs/',
+  url: 'https://agentx.js.org',
+  baseUrl: '/',
 
   organizationName: 'SohailKhan0525',
   projectName: 'agentx-docs',
   deploymentBranch: 'gh-pages',
   trailingSlash: false,
 
-  onBrokenLinks: 'warn',
+  onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
 
   i18n: {
@@ -51,17 +49,12 @@ const config: Config = {
         modalPosition: 'sidebar-right',
         bielButtonText: 'Ask AI',
         buttonStyle: 'dark',
-      },
+      }
     ],
   ],
 
   themeConfig: {
     image: 'img/agentx-social.png',
-    metadata: [
-      { name: 'theme-color', content: '#000000' },
-      { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'description', content: 'AgentX is the AI agent that plans, builds, tests, and deploys production-ready websites from your terminal.' },
-    ],
 
     colorMode: {
       defaultMode: 'dark',
@@ -80,32 +73,16 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'docsSidebar',
           position: 'left',
-          label: 'Documentation',
-        },
-        {
-          to: '/docs/installation',
-          label: 'Install',
-          position: 'left',
-        },
-        {
-          to: '/docs/stacks',
-          label: 'Stacks',
-          position: 'left',
-        },
-        {
-          to: '/docs/providers',
-          label: 'Providers',
-          position: 'left',
+          label: 'Docs',
         },
         {
           href: 'https://npmjs.com/package/@agent-qofeno/agentx-cli',
-          label: 'npm v2.0.4',
+          label: 'npm',
           position: 'right',
-          className: 'navbar-npm-badge',
         },
         {
           href: 'https://github.com/SohailKhan0525/agentx-cli',
-          label: 'GitHub ⭐',
+          label: 'GitHub',
           position: 'right',
         },
       ],
@@ -115,42 +92,31 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Documentation',
+          title: 'Docs',
           items: [
-            { label: 'Quick Start', to: '/docs/intro' },
+            { label: 'Getting Started', to: '/docs/intro' },
             { label: 'Installation', to: '/docs/installation' },
-            { label: 'AI Providers', to: '/docs/providers' },
-            { label: 'Local Models (Ollama)', to: '/docs/local-models' },
+            { label: 'Providers', to: '/docs/providers' },
+            { label: 'Local Models', to: '/docs/local-models' },
           ],
         },
         {
-          title: 'Reference',
+          title: 'Install',
           items: [
-            { label: 'Slash Commands', to: '/docs/commands' },
-            { label: 'Supported Stacks', to: '/docs/stacks' },
-            { label: 'Integrations & Services', to: '/docs/services' },
-            { label: 'Security Architecture', to: '/docs/security' },
-          ],
-        },
-        {
-          title: 'Packages & Registries',
-          items: [
-            { label: 'npm Registry', href: 'https://npmjs.com/package/@agent-qofeno/agentx-cli' },
-            { label: 'JSR Registry', href: 'https://jsr.io/@agent-qofeno/agentx-cli' },
-            { label: 'Homebrew Tap', href: 'https://github.com/SohailKhan0525/homebrew-agentx' },
-            { label: 'GitHub Releases', href: 'https://github.com/SohailKhan0525/agentx-cli/releases' },
+            { label: 'npm', href: 'https://npmjs.com/package/@agent-qofeno/agentx-cli' },
+            { label: 'JSR', href: 'https://jsr.io/@agent-qofeno/agentx-cli' },
+            { label: 'Homebrew', href: 'https://github.com/SohailKhan0525/homebrew-agentx' },
           ],
         },
         {
           title: 'Community',
           items: [
-            { label: 'GitHub Repo', href: 'https://github.com/SohailKhan0525/agentx-cli' },
-            { label: 'Issue Tracker', href: 'https://github.com/SohailKhan0525/agentx-cli/issues' },
-            { label: 'FAQ', to: '/docs/faq' },
+            { label: 'GitHub', href: 'https://github.com/SohailKhan0525/agentx-cli' },
+            { label: 'Issues', href: 'https://github.com/SohailKhan0525/agentx-cli/issues' },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} AgentX. Built with precision for developers worldwide.`,
+      copyright: `Copyright © ${new Date().getFullYear()} AgentX. Built by SohailKhan0525.`,
     },
 
     prism: {
