@@ -5,7 +5,7 @@ import {themes as prismThemes} from 'prism-react-renderer'
 const config: Config = {
   title: 'AgentX',
   tagline: 'The AI agent that builds production-ready websites from your terminal',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/logo.png',
 
   url: 'https://sohailkhan0525.github.io',
   baseUrl: '/agentx-docs/',
@@ -73,7 +73,7 @@ const config: Config = {
       title: 'AgentX',
       logo: {
         alt: 'AgentX Logo',
-        src: 'img/logo.svg',
+        src: 'img/logo.png',
       },
       items: [
         {
