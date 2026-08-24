@@ -51,10 +51,13 @@
 
 .heroInstall {
   margin-bottom: 32px;
+  cursor: pointer;
 }
 
 .installCommand {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
   background: #0d0d0d;
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 10px;
@@ -63,6 +66,20 @@
   color: #f0f0f0;
   font-family: var(--ifm-font-family-monospace);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.installCommand:hover {
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-1px);
+}
+
+.copyIndicator {
+  font-size: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 3px 8px;
+  border-radius: 4px;
+  color: #ffffff;
 }
 
 .heroActions {
@@ -285,6 +302,20 @@
   border-radius: 10px;
   padding: 20px;
   text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.installCard:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.installCardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
 
 .installLabel {
@@ -293,7 +324,14 @@
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 10px;
+}
+
+.cardCopyTag {
+  font-size: 11px;
+  color: #a1a1aa;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 2px 6px;
+  border-radius: 4px;
 }
 
 .installCode {

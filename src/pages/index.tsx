@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Link from '@docusaurus/Link'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import Layout from '@theme/Layout'
@@ -47,17 +47,28 @@ const providers = [
 ]
 
 const installMethods = [
-  { label: 'npm', command: 'npm install -g @agent-qofeno/agentx-cli' },
-  { label: 'Homebrew', command: 'brew tap SohailKhan0525/agentx && brew install agentx' },
-  { label: 'JSR', command: 'npx jsr add @agent-qofeno/agentx-cli' },
+  { id: 'npm', label: 'npm', command: 'npm install -g @agent-qofeno/agentx-cli' },
+  { id: 'brew', label: 'Homebrew', command: 'brew tap SohailKhan0525/agentx && brew install agentx' },
+  { id: 'jsr', label: 'JSR', command: 'npx jsr add @agent-qofeno/agentx-cli' },
 ]
 
-function HeroSection() {
+function HeroSection({ stars, version }: { stars: number | null, version: string }) {
+  const [copied, setCopied] = useState(false)
+  const heroCmd = 'npm install -g @agent-qofeno/agentx-cli'
+
+  const copyHero = () => {
+    if (typeof navigator !== 'undefined' && navigator.clipboard) {
+      navigator.clipboard.writeText(heroCmd)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    }
+  }
+
   return (
     <div className={styles.hero}>
       <div className={styles.heroInner}>
         <div className={styles.heroBadge}>
-          <span>🚀 Now in v2.0 — Production Ready</span>
+          <span>🚀 Now in v{version} — Production Ready</span>
         </div>
         <h1 className={styles.heroTitle}>
           The AI agent that builds<br />
@@ -67,9 +78,10 @@ function HeroSection() {
           Describe your website in plain English. AgentX plans, builds, deploys, and ships it.
           Not a demo. Not an MVP. A real website, live on the internet.
         </p>
-        <div className={styles.heroInstall}>
+        <div className={styles.heroInstall} onClick={copyHero} title="Click to copy">
           <code className={styles.installCommand}>
-            npm install -g @agent-qofeno/agentx-cli
+            <span>{heroCmd}</span>
+            <span className={styles.copyIndicator}>{copied ? '✓ Copied!' : '📋'}</span>
           </code>
         </div>
         <div className={styles.heroActions}>
@@ -80,7 +92,7 @@ function HeroSection() {
             className={styles.secondaryBtn}
             to="https://github.com/SohailKhan0525/agentx-cli"
           >
-            ⭐ Star on GitHub
+            ⭐ Star on GitHub {stars !== null ? `(${stars})` : ''}
           </Link>
         </div>
         <div className={styles.heroPlatforms}>
@@ -171,14 +183,34 @@ function HowItWorksSection() {
 }
 
 function InstallSection() {
+  const [copiedId, setCopiedId] = useState<string | null>(null)
+
+  const copyCode = (cmd: string, id: string) => {
+    if (typeof navigator !== 'undefined' && navigator.clipboard) {
+      navigator.clipboard.writeText(cmd)
+      setCopiedId(id)
+      setTimeout(() => setCopiedId(null), 2000)
+    }
+  }
+
   return (
     <section className={styles.install}>
       <div className={styles.sectionInner}>
         <h2 className={styles.sectionTitle}>Get started in seconds</h2>
         <div className={styles.installGrid}>
-          {installMethods.map((m, i) => (
-            <div key={i} className={styles.installCard}>
-              <div className={styles.installLabel}>{m.label}</div>
+          {installMethods.map((m) => (
+            <div
+              key={m.id}
+              className={styles.installCard}
+              onClick={() => copyCode(m.command, m.id)}
+              title="Click to copy command"
+            >
+              <div className={styles.installCardHeader}>
+                <div className={styles.installLabel}>{m.label}</div>
+                <span className={styles.cardCopyTag}>
+                  {copiedId === m.id ? '✓ Copied!' : 'Click to copy'}
+                </span>
+              </div>
               <code className={styles.installCode}>{m.command}</code>
             </div>
           ))}
@@ -189,7 +221,7 @@ function InstallSection() {
   )
 }
 
-function CTASection() {
+function CTASection({ stars }: { stars: number | null }) {
   return (
     <section className={styles.cta}>
       <div className={styles.sectionInner}>
@@ -203,7 +235,7 @@ function CTASection() {
             className={styles.secondaryBtn}
             to="https://github.com/SohailKhan0525/agentx-cli"
           >
-            ⭐ Star on GitHub
+            ⭐ Star on GitHub {stars !== null ? `(${stars})` : ''}
           </Link>
         </div>
       </div>
@@ -213,17 +245,42 @@ function CTASection() {
 
 export default function Home(): React.JSX.Element {
   const {siteConfig} = useDocusaurusContext()
+  const [stars, setStars] = useState<number | null>(null)
+  const [version, setVersion] = useState<string>('2.0.4')
+
+  useEffect(() => {
+    // Fetch GitHub stars
+    fetch('https://api.github.com/repos/SohailKhan0525/agentx-cli')
+      .then(res => res.json())
+      .then(data => {
+        if (data && typeof data.stargazers_count === 'number') {
+          setStars(data.stargazers_count)
+        }
+      })
+      .catch(() => {})
+
+    // Fetch npm version
+    fetch('https://registry.npmjs.org/@agent-qofeno/agentx-cli/latest')
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.version) {
+          setVersion(data.version)
+        }
+      })
+      .catch(() => {})
+  }, [])
+
   return (
     <Layout
       title={siteConfig.title}
       description="The AI agent that builds production-ready websites from your terminal"
     >
-      <HeroSection />
+      <HeroSection stars={stars} version={version} />
       <FeaturesSection />
       <ProvidersSection />
       <HowItWorksSection />
       <InstallSection />
-      <CTASection />
+      <CTASection stars={stars} />
     </Layout>
   )
 }
