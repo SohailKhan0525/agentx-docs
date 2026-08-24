@@ -43,7 +43,7 @@ const config: Config = {
     [
       'docusaurus-biel',
       {
-        project: 'YOUR_BIEL_PROJECT_ID',
+        project: 'zzovrc39p5',
         headerTitle: 'Ask AgentX AI',
         buttonPosition: 'center-right',
         modalPosition: 'sidebar-right',
