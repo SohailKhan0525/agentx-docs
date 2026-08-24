@@ -1,0 +1,88 @@
+/* AgentX Docs — Black and White Theme */
+/* Applies frontend-ui-ux-wizard and ui-ux-pro-max guidelines */
+
+:root {
+  --ifm-color-primary: #ffffff;
+  --ifm-color-primary-dark: #e0e0e0;
+  --ifm-color-primary-darker: #c0c0c0;
+  --ifm-color-primary-darkest: #808080;
+  --ifm-color-primary-light: #ffffff;
+  --ifm-color-primary-lighter: #ffffff;
+  --ifm-color-primary-lightest: #ffffff;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.1);
+  --ifm-font-family-base: 'Inter', system-ui, -apple-system, sans-serif;
+  --ifm-font-family-monospace: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* Dark mode — primary theme */
+[data-theme='dark'] {
+  --ifm-color-primary: #ffffff;
+  --ifm-background-color: #000000;
+  --ifm-navbar-background-color: #0a0a0a;
+  --ifm-footer-background-color: #0a0a0a;
+  --ifm-card-background-color: #111111;
+  --ifm-code-background: #111111;
+  --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.05);
+}
+
+/* Light mode */
+[data-theme='light'] {
+  --ifm-background-color: #ffffff;
+  --ifm-navbar-background-color: #f8f8f8;
+  --ifm-footer-background-color: #f0f0f0;
+}
+
+/* Hero section */
+.hero--primary {
+  background: #000000;
+  color: #ffffff;
+}
+
+[data-theme='light'] .hero--primary {
+  background: #111111;
+}
+
+/* Code blocks */
+.prism-code {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Install command highlight */
+.install-command {
+  background: #111111;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 16px 20px;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 16px;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Feature cards */
+.feature-card {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.02);
+  transition: border-color 0.2s;
+}
+
+.feature-card:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Navbar */
+.navbar {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: none;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
