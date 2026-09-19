@@ -1,2 +1,0 @@
-import React from 'react';import Link from '@docusaurus/Link';import Layout from '@theme/Layout';
-export default function NotFound():React.JSX.Element{return <Layout title="Not found"><main className="ax404"><div><span>404 / NOT FOUND</span><h1>This page is not in the workspace.</h1><p>The route may have moved. Return to the documentation and continue from the current project map.</p><Link to="/docs/intro">Open documentation →</Link></div></main></Layout>}
