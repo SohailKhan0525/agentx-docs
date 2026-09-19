@@ -1,17 +1,24 @@
 # AgentX
-> The autonomous AI agent that builds production-ready websites from your terminal.
 
-## Core Reference
-- Package: @agent-qofeno/agentx-cli
-- Version: v2.1.0
-- Homebrew: brew tap SohailKhan0525/agentx && brew install agentx
-- JSR: jsr:@agent-qofeno/agentx-cli
-- GitHub: https://github.com/SohailKhan0525/agentx-cli
-- Documentation: https://sohailkhan0525.github.io/agentx-docs/
+AgentX is a terminal-based AI agent for building and modifying real web projects.
+
+## Documentation
+
+- Introduction: https://agentx.js.org/docs/intro
+- Installation: https://agentx.js.org/docs/installation
+- Providers: https://agentx.js.org/docs/providers
+- Local Models: https://agentx.js.org/docs/local-models
+- Architecture: https://agentx.js.org/docs/architecture
+- Commands: https://agentx.js.org/docs/commands
+- Stacks: https://agentx.js.org/docs/stacks
+- Services: https://agentx.js.org/docs/services
+- Security: https://agentx.js.org/docs/security
+- FAQ: https://agentx.js.org/docs/faq
 
 ## Workflow
-1. Plan: Structured requirement decomposition
-2. Read: Inspect existing files before editing
-3. Tools: Execute real shell commands and file operations
-4. Iterate: Automated TypeScript and build validation loops
-5. Ship: Deploy production websites to Vercel, Netlify, Cloudflare, GitHub Pages
+
+AgentX follows a plan -> read -> execute -> verify loop. It is designed to inspect an existing repository before making changes and to use project checks as feedback.
+
+## Install
+
+npm install -g @agent-qofeno/agentx-cli
