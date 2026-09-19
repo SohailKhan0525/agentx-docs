@@ -1,32 +1,30 @@
 ---
-sidebar_position: 8
-title: Integrated Services
+sidebar_position: 4
+title: Integrated services
 description: Service categories AgentX can help configure in web projects.
 ---
 
 # Integrated services
 
-AgentX can help scaffold and configure common services when the project and provider credentials support them.
-
-## Integration map
+AgentX can help scaffold and configure services when the project and provider credentials support them.
 
 | Category | Examples |
 | --- | --- |
-| **Authentication** | Clerk, Supabase Auth, Firebase Auth, NextAuth, Auth0 |
-| **Databases** | Supabase, Firebase, MongoDB Atlas, Appwrite, PostgreSQL |
-| **ORM / data layer** | Prisma, Drizzle |
-| **Payments** | Stripe, Lemon Squeezy |
-| **Email** | Resend, SendGrid, Postmark, Mailgun |
-| **Storage** | Cloudflare R2, AWS S3, Supabase Storage, Uploadthing |
-| **Deployment** | Vercel, Netlify, Cloudflare Pages, Railway, Fly.io, GitHub Pages |
-| **Analytics / monitoring** | PostHog, Sentry, Google Analytics |
+| Authentication | Clerk, Supabase Auth, Firebase Auth, Auth.js, Auth0 |
+| Databases | Supabase, Firebase, MongoDB Atlas, Appwrite, PostgreSQL |
+| ORM and data | Prisma, Drizzle |
+| Payments | Stripe, Lemon Squeezy |
+| Email | Resend, SendGrid, Postmark, Mailgun |
+| Storage | Cloudflare R2, AWS S3, Supabase Storage |
+| Deployment | Vercel, Netlify, Cloudflare Pages, Railway, Fly.io, GitHub Pages |
+| Analytics | PostHog, Sentry, Google Analytics |
 
-## A safe integration workflow
+## Integration loop
 
-1. Ask AgentX to inspect the existing application.
-2. Specify the provider and behavior you need.
-3. Review the plan before credentials or configuration are changed.
-4. Keep secrets in environment variables or the provider's recommended secret store.
-5. Run the project's checks before deploying.
+1. Ask AgentX to inspect the current application.
+2. Name the provider and the behavior you need.
+3. Review the implementation plan.
+4. Put credentials in environment variables or the provider's secret store.
+5. Run the project's checks before deployment.
 
-AgentX can write integration code; your provider account, permissions, billing, and production configuration remain under your control.
+Your provider account, permissions, billing, and production configuration remain under your control.

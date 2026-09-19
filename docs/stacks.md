@@ -1,37 +1,37 @@
 ---
-sidebar_position: 7
-title: Supported Stacks
-description: Frameworks and front-end stacks documented for AgentX workflows.
+sidebar_position: 3
+title: Supported stacks
+description: Framework and styling guidance for AgentX workflows.
 ---
 
 # Supported stacks
 
-AgentX is aimed at modern web projects and can work with an existing stack when the repository provides enough context.
+AgentX is intended to work with modern web projects while respecting the stack that is already there.
 
-## Frameworks
+## Next.js
 
-### Next.js
+Useful for full stack applications and production web platforms. Existing App Router, TypeScript, Server Components, Server Actions, and styling choices should be read before new patterns are introduced.
 
-Useful for full-stack applications, SaaS products, and production web platforms.
+## React and Vite
 
-Common project choices include App Router, TypeScript, Server Components, Server Actions, and Tailwind CSS or project-specific styling.
+A strong fit for client heavy applications, dashboards, and single page tools.
 
-### React + Vite
+## Astro
 
-A strong fit for client-heavy applications, dashboards, and single-page tools.
+Useful for content heavy sites and documentation where keeping the client bundle small matters.
 
-### Astro
+## Nuxt
 
-A natural fit for content-heavy sites, documentation, blogs, and marketing pages where keeping the client bundle small matters.
-
-### Nuxt
-
-A Vue-oriented option for SSR applications and full-stack Vue projects.
-
-## How AgentX approaches a stack
-
-AgentX should read the project before introducing framework-specific patterns. Existing configuration, dependencies, routes, and conventions take precedence over a generic template.
+A Vue oriented option for SSR applications and full stack Vue projects.
 
 ## Styling
 
-AgentX can work with the styling system already present in a repository. Keep design tokens, component primitives, and responsive rules consistent with the existing project rather than creating a second visual system.
+AgentX should follow the repository's existing styling system. Keep design tokens, component primitives, responsive rules, and naming conventions consistent rather than creating a second visual system.
+
+## A good stack prompt
+
+```text
+Inspect the current framework and styling setup first.
+Do not add a new UI library unless the repository
+already uses it or the plan explains why it is needed.
+```

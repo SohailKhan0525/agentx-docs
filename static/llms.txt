@@ -1,24 +1,24 @@
 # AgentX
 
-AgentX is a terminal-based AI agent for building and modifying real web projects.
+AgentX is a terminal based AI agent for building and modifying real software projects.
 
-## Documentation
+## Core documentation
 
-- Introduction: https://agentx.js.org/docs/intro
-- Installation: https://agentx.js.org/docs/installation
-- Providers: https://agentx.js.org/docs/providers
-- Local Models: https://agentx.js.org/docs/local-models
-- Architecture: https://agentx.js.org/docs/architecture
-- Commands: https://agentx.js.org/docs/commands
-- Stacks: https://agentx.js.org/docs/stacks
-- Services: https://agentx.js.org/docs/services
-- Security: https://agentx.js.org/docs/security
-- FAQ: https://agentx.js.org/docs/faq
+- https://agentx.js.org/docs/intro
+- https://agentx.js.org/docs/installation
+- https://agentx.js.org/docs/providers
+- https://agentx.js.org/docs/local-models
+- https://agentx.js.org/docs/architecture
+- https://agentx.js.org/docs/commands
+- https://agentx.js.org/docs/stacks
+- https://agentx.js.org/docs/services
+- https://agentx.js.org/docs/security
+- https://agentx.js.org/docs/faq
 
 ## Workflow
 
-AgentX follows a plan -> read -> execute -> verify loop. It is designed to inspect an existing repository before making changes and to use project checks as feedback.
+AgentX follows a plan, read, execute, verify loop. It is designed to inspect an existing repository before editing and to use project checks as feedback.
 
 ## Install
 
-npm install -g @agent-qofeno/agentx-cli
+`npm install -g @agent-qofeno/agentx-cli`

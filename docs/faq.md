@@ -1,37 +1,37 @@
 ---
-sidebar_position: 10
+sidebar_position: 2
 title: FAQ
 description: Common questions about AgentX installation, providers, privacy, and projects.
 ---
 
-# Frequently asked questions
+# FAQ
 
-## Does AgentX send my code to an external service?
+## Is AgentX only for new projects?
 
-That depends on the provider you choose. Cloud providers receive the information required for the model request. With a local model runner, inference can remain on your machine or local network.
+No. Working with an existing repository is a central use case. AgentX is designed to read the current project before editing.
 
-Review the privacy and data-retention terms of the provider you connect.
+## Does my code leave my machine?
+
+That depends on the model provider. Hosted providers receive the information required for model requests. With a local runner, inference can remain on your machine or local network.
+
+Check the current privacy and retention terms of the provider you choose.
 
 ## Where should API keys live?
 
-Keep credentials in the environment or secure credential store supported by your platform. Never commit keys to Git.
-
-## Which operating systems are supported?
-
-The documentation covers Windows, macOS, and Linux workflows.
-
-## Can AgentX work on an existing codebase?
-
-Yes. Reading the current repository before editing is a core part of the workflow.
+Use your environment or a secure credential store. Never commit keys to Git.
 
 ## Can I use local models?
 
-Yes. See [Local Models](/docs/local-models) for Ollama and LM Studio setup.
+Yes. See [Local models](./local-models) for Ollama and LM Studio workflows.
 
-## Is AgentX free?
+## Which operating systems are supported?
 
-The AgentX CLI is open source under the MIT License. Your AI provider may charge for model usage, while local inference has its own hardware and electricity costs.
+The documentation covers Windows, macOS, and Linux terminal workflows.
+
+## Is the CLI free?
+
+The AgentX CLI is open source under the MIT License. Hosted model providers can charge for usage, while local inference has hardware and electricity costs.
 
 ## Where do I report bugs?
 
-Use the [AgentX CLI GitHub repository](https://github.com/SohailKhan0525/agentx-cli) and its issue tracker for bugs and feature requests.
+Use the [AgentX CLI repository](https://github.com/SohailKhan0525/agentx-cli) for bugs and feature requests.

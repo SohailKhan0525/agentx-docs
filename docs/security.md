@@ -1,46 +1,46 @@
 ---
-sidebar_position: 9
-title: Security & Privacy
-description: Security practices and privacy considerations for AgentX projects.
+sidebar_position: 1
+title: Security and privacy
+description: Credential handling, workspace boundaries, and local inference guidance.
 ---
 
-# Security & privacy
+# Security and privacy
 
-AgentX is intended to work with real repositories, so credential handling and tool boundaries matter.
+AgentX works with real repositories, so credentials and tool boundaries deserve the same care as any other development workflow.
 
 ## Credentials
 
-Do not commit API keys or access tokens to source control.
+Never commit API keys, tokens, or private credentials to Git.
 
-Use the credential mechanism supported by your environment, such as:
+Use the credential mechanism supported by your environment:
 
 - macOS Keychain
 - Windows Credential Manager
-- Linux Secret Service / keyring
+- Linux Secret Service or keyring
 - Environment variables for local development
-- Your CI or hosting provider's secret store for deployment
+- CI or hosting provider secret stores for deployment
 
-Treat terminal output and logs as sensitive when credentials are involved.
+Treat terminal output and logs as sensitive when credentials are present.
 
 ## Workspace boundaries
 
-Run AgentX from the project you intend it to change. Review commands and file changes before allowing destructive operations.
+Run AgentX from the project you intend to change. Review destructive commands and file changes before allowing them.
 
-Keep sensitive files out of the repository with an appropriate ignore file.
+Use an appropriate ignore file for secrets and generated files.
 
 ## Local inference
 
-When using Ollama or LM Studio, inference can remain on your local machine or local network. The network behavior of the model runner itself depends on how you configure that runner.
+Ollama and LM Studio can keep inference on your machine or local network. Their model downloads, telemetry, and networking depend on how you configure each runner.
 
-## Before production
+## Production checklist
 
 - [ ] No secrets are committed.
-- [ ] Production credentials are stored in a secret manager.
+- [ ] Production credentials live in a secret manager.
 - [ ] Generated dependencies are reviewed.
 - [ ] Authentication and authorization are tested.
 - [ ] Build and type checks pass.
-- [ ] Deployment permissions are scoped to what the project needs.
+- [ ] Deployment permissions are scoped to the project.
 
 ## Reporting a vulnerability
 
-For a security issue in AgentX, use the project's GitHub security reporting flow or open an issue when private disclosure is not available.
+Use the AgentX CLI repository's security reporting flow for private disclosure when available. For non sensitive bugs and feature requests, use its issue tracker.

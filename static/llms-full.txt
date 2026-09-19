@@ -1,24 +1,28 @@
-# AgentX
+# AgentX documentation
 
-AgentX is a terminal-based AI agent for building and modifying real web projects.
+## Introduction
 
-## Documentation
+AgentX is a terminal based AI agent for building and modifying real software projects. It is designed around an inspectable loop: understand the request, read the repository, plan the implementation, execute changes with real tools, and verify the result.
 
-- Introduction: https://agentx.js.org/docs/intro
-- Installation: https://agentx.js.org/docs/installation
-- Providers: https://agentx.js.org/docs/providers
-- Local Models: https://agentx.js.org/docs/local-models
-- Architecture: https://agentx.js.org/docs/architecture
-- Commands: https://agentx.js.org/docs/commands
-- Stacks: https://agentx.js.org/docs/stacks
-- Services: https://agentx.js.org/docs/services
-- Security: https://agentx.js.org/docs/security
-- FAQ: https://agentx.js.org/docs/faq
+## Installation
 
-## Workflow
+Install with npm, Homebrew, or JSR:
 
-AgentX follows a plan -> read -> execute -> verify loop. It is designed to inspect an existing repository before making changes and to use project checks as feedback.
-
-## Install
-
+```bash
 npm install -g @agent-qofeno/agentx-cli
+brew tap SohailKhan0525/agentx && brew install agentx
+npx jsr add @agent-qofeno/agentx-cli
+```
+
+## Guides
+
+- Providers: cloud and local model configuration.
+- Local models: Ollama and LM Studio workflows.
+- Architecture: plan, read, execute, verify.
+- Commands: slash commands and keyboard shortcuts.
+- Stacks: framework and styling guidance.
+- Services: common integrations.
+- Security: credential and workspace practices.
+- FAQ: common questions.
+
+The canonical, expanded content lives at https://agentx.js.org/docs/.

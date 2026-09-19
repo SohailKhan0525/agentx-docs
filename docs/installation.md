@@ -6,13 +6,13 @@ description: Install AgentX on macOS, Linux, or Windows.
 
 # Installation
 
-AgentX is distributed through npm, Homebrew, JSR, and GitHub Packages.
+Choose the distribution channel that fits your machine.
 
 ## Requirements
 
-- **Node.js:** 18.0.0 or newer. Node 20+ is recommended.
-- **Terminal:** bash, zsh, fish, PowerShell, Windows Terminal, or another modern shell.
-- **Credentials:** an API key for a supported provider, or a local model runner such as Ollama or LM Studio.
+- Node.js 20 or newer is recommended.
+- A modern terminal such as bash, zsh, fish, PowerShell, or Windows Terminal.
+- A supported cloud provider credential, or a local model runner.
 
 ## npm
 
@@ -22,7 +22,7 @@ npm install -g @agent-qofeno/agentx-cli
 
 ## Homebrew
 
-On macOS and Linux:
+On macOS or Linux:
 
 ```bash
 brew tap SohailKhan0525/agentx
@@ -35,21 +35,21 @@ brew install agentx
 npx jsr add @agent-qofeno/agentx-cli
 ```
 
-## GitHub Packages
-
-```bash
-npm install -g @SohailKhan0525/agentx-cli --registry https://npm.pkg.github.com
-```
-
 ## Verify
 
 ```bash
 agentx --version
+```
+
+Then start AgentX from the project you want it to understand:
+
+```bash
+cd your-project
 agentx
 ```
 
 ## First run
 
-On first launch, configure the AI provider you want to use. Keep credentials in your normal environment or secure credential-management workflow; do not commit secrets to a repository.
+Configure only the provider you intend to use. Keep credentials in your environment or secure credential store and never commit secrets.
 
-For local inference, continue to [Local Models](/docs/local-models).
+For local inference, continue to [Local Models](./local-models).
