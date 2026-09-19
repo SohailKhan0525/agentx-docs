@@ -2,32 +2,135 @@
 import SiteLayout from '../layouts/SiteLayout.astro';
 import '../styles/global.css';
 ---
-<SiteLayout title="AgentX — Build with an agent that can see the whole project." description="AgentX is a terminal-first coding agent that understands your repository before changing it.">
+<SiteLayout
+  title="AgentX — The open source AI coding agent"
+  description="AgentX is an open source AI coding agent for terminal-first software development."
+>
   <main>
     <section class="hero">
-      <div class="hero-copy">
-        <p class="eyebrow">TERMINAL-FIRST CODING AGENT</p>
-        <h1>Build with an agent that can see the whole project.</h1>
-        <p>AgentX reads your repository, plans the work, changes the right files, and uses project checks to verify the result.</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="/docs/installation/">Install AgentX</a>
-          <a class="button" href="/docs/intro/">Read the docs</a>
+      <div class="shell hero-grid">
+        <div>
+          <p class="kicker">OPEN SOURCE · TERMINAL FIRST</p>
+          <h1>The AI coding agent for the whole repository.</h1>
+          <p class="hero-lead">AgentX reads the project, turns requests into a plan, makes focused changes, and verifies the result from the same terminal workflow.</p>
+          <div class="actions">
+            <a class="button" href="/docs/installation/">Install AgentX</a>
+            <a class="secondary" href="/docs/intro/">Read the docs →</a>
+          </div>
+          <p class="proof">Works with hosted providers and local models. Built for real software projects.</p>
+        </div>
+
+        <div class="terminal" aria-label="AgentX terminal preview">
+          <div class="term-top"><span>~/workspace/agentx</span><span>agentx</span></div>
+          <div class="term-body">
+            <div>$ agentx</div>
+            <div class="muted">Reading repository structure…</div>
+            <div class="muted">Checking package scripts…</div>
+            <div class="term-line"></div>
+            <div>Plan</div>
+            <div class="plan"><span>01</span>Inspect affected files</div>
+            <div class="plan"><span>02</span>Implement the smallest change</div>
+            <div class="plan"><span>03</span>Run project checks</div>
+            <div class="plan"><span>04</span>Report what changed</div>
+          </div>
         </div>
       </div>
-      <div class="terminal">
-        <div class="terminal-bar"><span></span><span></span><span></span></div>
-        <pre><code>$ agentx
-Plan → Read → Execute → Verify
+    </section>
 
-> Inspecting repository
-> Building an implementation plan
-> Ready for your approval</code></pre>
+    <section class="tagline">
+      <div class="shell">
+        <h2>Understand first. Change precisely. Verify everything.</h2>
       </div>
     </section>
+
     <section class="section">
-      <p class="eyebrow">THE CORE IDEA</p>
-      <h2>Understand the code before you change the code.</h2>
-      <p>AgentX is designed around repository awareness, explicit plans, native terminal workflows, and verification.</p>
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="kicker">WHY AGENTX</p>
+            <h2>A coding agent that stays close to the code.</h2>
+          </div>
+          <p>AgentX is designed for developers who want agentic speed without losing visibility into the repository, commands, and final diff.</p>
+        </div>
+        <div class="benefits">
+          <article class="benefit"><span>01</span><h3>Repository-aware</h3><p>Inspect source, configuration, dependencies, and project conventions before editing.</p></article>
+          <article class="benefit"><span>02</span><h3>Plan-first</h3><p>Turn a request into explicit steps so the intended work is clear before execution begins.</p></article>
+          <article class="benefit"><span>03</span><h3>Terminal-native</h3><p>Keep the workflow where developers already build, test, search, and ship software.</p></article>
+          <article class="benefit"><span>04</span><h3>Verification built in</h3><p>Run the checks that matter, inspect failures, and iterate instead of stopping at a generated patch.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="dark">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="kicker">THE WORKFLOW</p>
+            <h2>One loop from request to verified change.</h2>
+          </div>
+          <p>Designed to make agent activity legible rather than magical.</p>
+        </div>
+        <div class="loop">
+          <div class="loop-row"><span>01</span><h3>Plan</h3><p>Define the outcome, constraints, and affected areas.</p></div>
+          <div class="loop-row"><span>02</span><h3>Read</h3><p>Inspect the repository and understand how the current system works.</p></div>
+          <div class="loop-row"><span>03</span><h3>Execute</h3><p>Use the terminal and project tools to make focused changes.</p></div>
+          <div class="loop-row"><span>04</span><h3>Verify</h3><p>Run tests, type checks, builds, or other checks relevant to the change.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="editorial">
+      <div class="shell two-col">
+        <div>
+          <p class="kicker">OPEN &amp; FLEXIBLE</p>
+          <h2>Use the models and workflow that fit your project.</h2>
+        </div>
+        <div>
+          <p>Connect a supported hosted provider or keep inference closer to your own environment with a local model setup.</p>
+          <a class="arrow" href="/docs/providers/">Explore model providers →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="install">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="kicker">GET STARTED</p>
+            <h2>Put AgentX in your terminal.</h2>
+          </div>
+          <p>Install the CLI, open a repository, and start with a concrete outcome.</p>
+        </div>
+        <div class="install-box">
+          <code>npm i -g @agent-qofeno/agentx-cli@latest</code>
+          <button type="button" data-copy="npm i -g @agent-qofeno/agentx-cli@latest">Copy</button>
+        </div>
+        <div class="faq">
+          <details><summary>Where should I start? <span>+</span></summary><p>Install AgentX, open your project directory, and use the Introduction to understand the four-step workflow.</p></details>
+          <details><summary>Can I use local models? <span>+</span></summary><p>Yes. See the Local models guide for supported local inference workflows.</p></details>
+          <details><summary>Where are the commands documented? <span>+</span></summary><p>Use the Commands page for session controls and shortcuts.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="shell cta-inner">
+        <div>
+          <p class="kicker">AGENTX</p>
+          <h2>Build with context, not guesswork.</h2>
+          <p>Read the repository. Plan the work. Make the change. Verify it.</p>
+        </div>
+        <a class="button-light" href="/docs/installation/">Install AgentX</a>
+      </div>
     </section>
   </main>
+  <script>
+    document.querySelectorAll('[data-copy]').forEach((button) => {
+      button.addEventListener('click', async () => {
+        await navigator.clipboard.writeText(button.dataset.copy || '');
+        button.textContent = 'Copied';
+        setTimeout(() => { button.textContent = 'Copy'; }, 1400);
+      });
+    });
+  </script>
 </SiteLayout>
