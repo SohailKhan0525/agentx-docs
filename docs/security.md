@@ -1,33 +1,46 @@
 ---
 sidebar_position: 9
 title: Security & Privacy
+description: Security practices and privacy considerations for AgentX projects.
 ---
 
-# Security & Privacy Architecture
+# Security & privacy
 
-AgentX is designed around strict security, sandboxing, and credential protection principles.
+AgentX is intended to work with real repositories, so credential handling and tool boundaries matter.
 
----
+## Credentials
 
-## Native Credential Encryption
+Do not commit API keys or access tokens to source control.
 
-- **No Plaintext Secrets**: API keys are never stored in plaintext dotfiles or JSON caches.
-- **OS Keychain Integration**: Credentials are protected via OS-level hardware encryption:
-  - **macOS**: Apple Keychain Services
-  - **Windows**: Windows Credential Manager (DPAPI)
-  - **Linux**: Freedesktop Secret Service (GNOME Keyring / KWallet)
-- **Masked Display**: Keys shown in terminal or logs are truncated: `sk-ant••••••••ABCD`.
+Use the credential mechanism supported by your environment, such as:
 
----
+- macOS Keychain
+- Windows Credential Manager
+- Linux Secret Service / keyring
+- Environment variables for local development
+- Your CI or hosting provider's secret store for deployment
 
-## Sandboxed Tool Execution
+Treat terminal output and logs as sensitive when credentials are involved.
 
-1. **Workspace Boundary**: AgentX commands run exclusively within your current project root.
-2. **Ignored Files**: Automatically writes sensitive credentials to `.env.local` and validates `.gitignore` before repository commits.
-3. **Local Inference Privacy**: When using Ollama or LM Studio, no code, logs, or prompt tokens leave your local network.
+## Workspace boundaries
 
----
+Run AgentX from the project you intend it to change. Review commands and file changes before allowing destructive operations.
 
-## Vulnerability Reporting
+Keep sensitive files out of the repository with an appropriate ignore file.
 
-Report security issues directly via our [GitHub Security Advisories](https://github.com/SohailKhan0525/agentx-cli/security/advisories) or repository issues.
+## Local inference
+
+When using Ollama or LM Studio, inference can remain on your local machine or local network. The network behavior of the model runner itself depends on how you configure that runner.
+
+## Before production
+
+- [ ] No secrets are committed.
+- [ ] Production credentials are stored in a secret manager.
+- [ ] Generated dependencies are reviewed.
+- [ ] Authentication and authorization are tested.
+- [ ] Build and type checks pass.
+- [ ] Deployment permissions are scoped to what the project needs.
+
+## Reporting a vulnerability
+
+For a security issue in AgentX, use the project's GitHub security reporting flow or open an issue when private disclosure is not available.
