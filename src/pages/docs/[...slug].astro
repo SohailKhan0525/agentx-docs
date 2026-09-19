@@ -5,22 +5,54 @@ import { marked } from 'marked';
 import SiteLayout from '../../layouts/SiteLayout.astro';
 import '../../styles/global.css';
 
-const docsDir=path.resolve(process.cwd(),'docs');
-const files=fs.readdirSync(docsDir).filter((name)=>name.endsWith('.md'));
-const items=files.map((file)=>({slug:file.replace(/\.md$/,''),file}));
-const groups=[['Get started',['intro','installation']],['Models',['providers','local-models']],['Agent workflow',['architecture','commands']],['Build',['stacks','services']],['Trust',['security','faq']],['Site',['privacy','terms']]];
-function readDoc(slug){
- const item=items.find((x)=>x.slug===slug); if(!item) return null;
- const raw=fs.readFileSync(path.join(docsDir,item.file),'utf8');
- const fm=raw.match(/^---\n([\s\S]*?)\n---\n?/);
- const body=fm?raw.slice(fm[0].length):raw;
- const title=(body.match(/^#\s+(.+)$/m)||[])[1]||slug;
- const description=((fm?.[1]||'').match(/^description:\s*(.+)$/m)||[])[1]?.trim()||('AgentX documentation — '+title);
- return {title,description,html:marked.parse(body)};
+const docsDir = path.resolve(process.cwd(), 'docs');
+const files = fs.readdirSync(docsDir).filter((name) => name.endsWith('.md'));
+
+function readDoc(slug, items) {
+  const item = items.find((x) => x.slug === slug);
+  if (!item) return null;
+  const raw = fs.readFileSync(path.join(docsDir, item.file), 'utf8');
+  const fm = raw.match(/^---\n([\s\S]*?)\n---\n?/);
+  const body = fm ? raw.slice(fm[0].length) : raw;
+  const title = (body.match(/^#\s+(.+)$/m) || [])[1] || slug;
+  const description =
+    ((fm?.[1] || '').match(/^description:\s*(.+)$/m) || [])[1]?.trim() ||
+    'AgentX documentation — ' + title;
+  return { title, description, html: marked.parse(body) };
 }
-export function getStaticPaths(){return items.map(({slug})=>({params:{slug},props:{doc:readDoc(slug)}}))}
-const {doc}=Astro.props;
+
+export function getStaticPaths() {
+  const items = files.map((file) => ({ slug: file.replace(/\.md$/, ''), file }));
+  return items.map(({ slug }) => ({
+    params: { slug },
+    props: { doc: readDoc(slug, items) }
+  }));
+}
+
+const { doc } = Astro.props;
 ---
-<SiteLayout title={doc.title+' — AgentX'} description={doc.description} docs>
-<div class="docs-layout"><aside class="docs-sidebar" aria-label="Documentation"><strong>DOCUMENTATION</strong>{groups.map(([label,slugs])=><div><div class="docs-note">{label}</div>{slugs.map((slug)=><a href={'/docs/'+slug+'/'}>{items.find(x=>x.slug===slug)?.file.replace('.md','')}</a>)}</div>)}</aside><article class="docs-content"><div set:html={doc.html}></div></article></div>
+<SiteLayout title={doc.title + ' — AgentX'} description={doc.description} docs>
+  <div class="docs-layout">
+    <aside class="docs-sidebar" aria-label="Documentation">
+      <strong>DOCUMENTATION</strong>
+      {[
+        ['Get started', ['intro', 'installation']],
+        ['Models', ['providers', 'local-models']],
+        ['Agent workflow', ['architecture', 'commands']],
+        ['Build', ['stacks', 'services']],
+        ['Trust', ['security', 'faq']],
+        ['Site', ['privacy', 'terms']]
+      ].map(([label, slugs]) => (
+        <div>
+          <div class="docs-note">{label}</div>
+          {slugs.map((slug) => (
+            <a href={'/docs/' + slug + '/'}>
+              {files.find((file) => file.replace(/\.md$/, '') === slug)?.replace('.md', '')}
+            </a>
+          ))}
+        </div>
+      ))}
+    </aside>
+    <article class="docs-content"><div set:html={doc.html}></div></article>
+  </div>
 </SiteLayout>
