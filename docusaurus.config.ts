@@ -16,7 +16,6 @@ const config: Config = {
   onBrokenMarkdownLinks: 'warn',
   i18n: {defaultLocale: 'en', locales: ['en']},
   presets: [['classic',{docs:{sidebarPath:'./sidebars.ts',editUrl:'https://github.com/SohailKhan0525/agentx-docs/tree/main/'},blog:false,theme:{customCss:'./src/css/custom.css'}}] satisfies Preset.Options],
-  plugins: [['docusaurus-biel',{project:'zzovrc39p5',headerTitle:'Ask AgentX AI',buttonPosition:'center-right',modalPosition:'sidebar-right',bielButtonText:'Ask AI',buttonStyle:'dark'}]],
   themeConfig: {
     image: 'img/agentx-social.png',
     colorMode: {defaultMode:'light',disableSwitch:false,respectPrefersColorScheme:false},
