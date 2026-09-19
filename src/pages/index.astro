@@ -1,0 +1,33 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import '../styles/global.css';
+---
+<SiteLayout title="AgentX — Build with an agent that can see the whole project." description="AgentX is a terminal-first coding agent that understands your repository before changing it.">
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">TERMINAL-FIRST CODING AGENT</p>
+        <h1>Build with an agent that can see the whole project.</h1>
+        <p>AgentX reads your repository, plans the work, changes the right files, and uses project checks to verify the result.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="/docs/installation/">Install AgentX</a>
+          <a class="button" href="/docs/intro/">Read the docs</a>
+        </div>
+      </div>
+      <div class="terminal">
+        <div class="terminal-bar"><span></span><span></span><span></span></div>
+        <pre><code>$ agentx
+Plan → Read → Execute → Verify
+
+> Inspecting repository
+> Building an implementation plan
+> Ready for your approval</code></pre>
+      </div>
+    </section>
+    <section class="section">
+      <p class="eyebrow">THE CORE IDEA</p>
+      <h2>Understand the code before you change the code.</h2>
+      <p>AgentX is designed around repository awareness, explicit plans, native terminal workflows, and verification.</p>
+    </section>
+  </main>
+</SiteLayout>
