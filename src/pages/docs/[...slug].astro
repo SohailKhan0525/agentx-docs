@@ -22,6 +22,8 @@ function readDoc(slug, items) {
 }
 
 export function getStaticPaths() {
+  const docsDir = path.resolve(process.cwd(), 'docs');
+  const files = fs.readdirSync(docsDir).filter((name) => name.endsWith('.md'));
   const items = files.map((file) => ({ slug: file.replace(/\.md$/, ''), file }));
   return items.map(({ slug }) => ({
     params: { slug },
