@@ -1,37 +1,37 @@
 ---
 sidebar_position: 7
 title: Supported Stacks
+description: Frameworks and front-end stacks documented for AgentX workflows.
 ---
 
-# Supported Frameworks & Stacks
+# Supported stacks
 
-AgentX supports modern web frameworks with best-practice configurations for TypeScript, styling, and asset optimization.
+AgentX is aimed at modern web projects and can work with an existing stack when the repository provides enough context.
 
----
+## Frameworks
 
-## Framework Ecosystem
+### Next.js
 
-### 1. Next.js 14 (App Router)
-- **Best For**: High-performance SaaS apps, e-commerce, and full-stack web platforms.
-- **Includes**: Server Components (RSC), Server Actions, API Routes, Tailwind CSS / Vanilla CSS, and SEO metadata.
+Useful for full-stack applications, SaaS products, and production web platforms.
 
-### 2. React + Vite
-- **Best For**: Client-side dashboards, interactive tools, and SPA applications.
-- **Includes**: Instant HMR, TypeScript, React Router, Lucide/FontAwesome icons, and optimized asset chunking.
+Common project choices include App Router, TypeScript, Server Components, Server Actions, and Tailwind CSS or project-specific styling.
 
-### 3. Astro
-- **Best For**: Marketing sites, blogs, portfolios, and content-heavy platforms.
-- **Includes**: Zero JavaScript by default, Island architecture, Markdown/MDX support, and perfect Lighthouse scores.
+### React + Vite
 
-### 4. Nuxt 3
-- **Best For**: Vue.js ecosystems, SSR dashboards, and full-stack Vue applications.
-- **Includes**: Vue 3 Composition API, auto-imports, Nitro server engine, and TypeScript.
+A strong fit for client-heavy applications, dashboards, and single-page tools.
 
----
+### Astro
 
-## Design System & Styling
+A natural fit for content-heavy sites, documentation, blogs, and marketing pages where keeping the client bundle small matters.
 
-AgentX incorporates intentional visual design tokens:
-- **Typography**: Paired Google Fonts and modern system font stacks.
-- **Colors**: Curated HSL dark/light modes with harmonic contrast.
-- **Icons**: FontAwesome 6 vector icons and modern SVG icon libraries with zero generic emojis.
+### Nuxt
+
+A Vue-oriented option for SSR applications and full-stack Vue projects.
+
+## How AgentX approaches a stack
+
+AgentX should read the project before introducing framework-specific patterns. Existing configuration, dependencies, routes, and conventions take precedence over a generic template.
+
+## Styling
+
+AgentX can work with the styling system already present in a repository. Keep design tokens, component primitives, and responsive rules consistent with the existing project rather than creating a second visual system.
