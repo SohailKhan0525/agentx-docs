@@ -1,42 +1,57 @@
 ---
 sidebar_position: 1
 title: Introduction
+description: Understand AgentX and run your first task from the terminal.
 ---
 
-# AgentX Introduction
+# AgentX
 
-**AgentX** is an autonomous AI agent built specifically for full-stack website creation from your terminal. 
+AgentX is a terminal-based AI agent for building and modifying real web projects.
 
-Unlike generic code generation assistants that produce disconnected snippets or partial examples, AgentX acts as an end-to-end software engineer: it writes a structured implementation plan, analyzes your existing directory, invokes shell commands, writes real production files, self-heals build and TypeScript errors, and deploys live.
+The workflow is project-aware: describe an outcome, let AgentX inspect the repository, review its plan, approve the work, and verify the result.
 
----
+## The core loop
 
-## Key Capabilities
+| Stage | What happens |
+| --- | --- |
+| **Plan** | AgentX turns the request into an implementation plan. |
+| **Read** | It inspects the project structure, code, dependencies, and context. |
+| **Execute** | It edits files and uses the terminal tools available to the project. |
+| **Verify** | It uses build, type-check, lint, or other project checks as feedback. |
+| **Ship** | You keep the result in your normal local or deployment workflow. |
 
-- **Autonomous Website Builder**: From prompt to live URL in Next.js 14, React + Vite, Astro, or Nuxt 3.
-- **Interactive Terminal UI**: Monochromatic Ink interface with live streaming tokens, step-by-step progress bars, and keyboard shortcuts.
-- **Provider Agnostic**: Cloud models (Claude, OpenAI, Gemini, Copilot, Groq) or 100% private offline inference with Ollama and LM Studio.
-- **Self-Healing Loop**: Automatically inspects build logs, runs compiler checks, and fixes syntax or dependency issues before shipping.
-- **One-Command Deployment**: Instant hosting integration with Vercel, Netlify, Cloudflare Pages, Railway, and GitHub Pages.
-- **Cryptographic Provenance**: Signed npm and JSR releases with verified build attestations.
-
----
-
-## Quick Start (60 Seconds)
+## Start in two commands
 
 ```bash
-# 1. Install globally via npm
 npm install -g @agent-qofeno/agentx-cli
-
-# 2. Launch the interactive AgentX session
 agentx
 ```
 
----
+Run AgentX from the root of the project you want it to understand.
 
-## Next Steps
+## What AgentX is built for
 
-- [Installation Guide](/docs/installation) — Explore install options via npm, Homebrew, JSR, and GitHub Packages.
-- [AI Providers](/docs/providers) — Connect your preferred LLM provider or local runtime.
-- [Supported Stacks](/docs/stacks) — Learn about framework presets and design systems.
-- [Agent Architecture](/docs/architecture) — Understand the five-stage planning and execution loop.
+- **Website creation** — build pages and applications from a natural-language outcome.
+- **Existing repositories** — work with code that already has structure and conventions.
+- **Provider choice** — connect supported cloud models or local model runners.
+- **Tool-driven work** — use files, commands, packages, and Git as part of the task.
+- **Iterative verification** — treat compiler and build feedback as part of the loop.
+
+## A useful first prompt
+
+Be specific about the outcome and constraints:
+
+```text
+Build a documentation site for this CLI.
+
+Keep the existing routes, use the current framework,
+and make the landing page responsive. Before editing,
+inspect the repository and show me the implementation plan.
+```
+
+## Next
+
+1. [Install AgentX](/docs/installation)
+2. [Configure a provider](/docs/providers)
+3. [Learn the agent architecture](/docs/architecture)
+4. [Explore commands](/docs/commands)
