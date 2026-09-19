@@ -25,7 +25,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: npm
+          # No npm cache: this repo intentionally does not commit a lockfile.
 
       - name: Install dependencies
         run: npm install
