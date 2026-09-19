@@ -15,7 +15,7 @@ The workflow is deliberately inspectable: understand the outcome, read the works
 Install the CLI and run it from the project you want AgentX to understand:
 
 ```bash
-npm install -g @agent-qofeno/agentx-cli
+npm i -g @agent-qofeno/agentx-cli@latest
 cd your-project
 agentx
 ```
@@ -30,7 +30,7 @@ Inspect the repository first and show me the plan
 before making changes.
 ```
 
-## The four moves
+## The TUI\n\nAgentX Code runs as a terminal user interface (TUI). The interface keeps the session, repository context, tools, and changes visible while the agent works.\n\nUse `Tab` to switch between the built-in agents:\n\n- **build** — the default full-access agent for development work.\n- **plan** — a read-only agent for analysis and code exploration; file edits are denied by default and shell commands require permission.\n\nAgentX also includes a `general` subagent for complex searches and multistep tasks. Invoke it with `@general`.\n\n## The four moves
 
 1. **Plan** — define the requested outcome and the affected areas.
 2. **Read** — inspect source, dependencies, configuration, and conventions.
