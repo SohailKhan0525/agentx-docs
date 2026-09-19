@@ -1,316 +1,107 @@
-import React, { useState, useEffect } from 'react'
+import React, {useState} from 'react'
 import Link from '@docusaurus/Link'
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import Layout from '@theme/Layout'
 import styles from './index.module.css'
 
-// Feature list with FontAwesome icon classes
-const features = [
-  {
-    iconClass: 'fa-solid fa-compass-drafting',
-    title: 'Plans Before Acting',
-    description: "Like Claude Code, AgentX writes an explicit plan and gets your confirmation before building anything.",
-  },
-  {
-    iconClass: 'fa-solid fa-book-open-reader',
-    title: 'Reads Code First',
-    description: "Never edits files it hasn't read. Understands your codebase before making any changes.",
-  },
-  {
-    iconClass: 'fa-solid fa-screwdriver-wrench',
-    title: 'Real Tools',
-    description: "Actually runs commands, writes files, and makes API calls. Never just describes what it would do.",
-  },
-  {
-    iconClass: 'fa-solid fa-arrows-rotate',
-    title: 'Iterates Until Done',
-    description: "Fixes its own TypeScript errors and build failures. Doesn't stop until the website works.",
-  },
-  {
-    iconClass: 'fa-solid fa-cloud-arrow-up',
-    title: 'Deploys Live',
-    description: "Pushes to GitHub and deploys to Vercel, Netlify, Railway, or Fly.io automatically.",
-  },
-  {
-    iconClass: 'fa-solid fa-shield-halved',
-    title: 'Secure By Default',
-    description: "API keys stored in OS secure storage. Never in plain text files. Never logged.",
-  },
+const capabilities = [
+  ['01','Plans before it edits','AgentX creates a concrete plan before changing code, so you can review the work first.'],
+  ['02','Reads the repo first','It inspects the project it is about to change instead of guessing from a blank template.'],
+  ['03','Uses your terminal','Commands, files, package managers, Git, and APIs are part of the workflow.'],
+  ['04','Verifies the result','Build failures and type errors become another pass in the loop instead of the end of the task.'],
 ]
 
-const providers = [
-  { name: 'GitHub Copilot', iconClass: 'fa-brands fa-github' },
-  { name: 'ChatGPT', iconClass: 'fa-solid fa-brain' },
-  { name: 'Google Gemini', iconClass: 'fa-brands fa-google' },
-  { name: 'Claude', iconClass: 'fa-solid fa-robot' },
-  { name: 'Local Models', iconClass: 'fa-solid fa-laptop-code' },
+const workflow = [
+  ['01','Describe the outcome','Tell AgentX what the website should do, who it is for, and what matters.'],
+  ['02','Review the plan','See the pages, implementation work, and integrations before the build starts.'],
+  ['03','Let it build','AgentX reads the repo, edits the right files, runs commands, and keeps iterating.'],
+  ['04','Ship the result','Use the project locally or push it through your existing deployment flow.'],
 ]
 
-const installMethods = [
-  { id: 'npm', label: 'npm', iconClass: 'fa-brands fa-npm', command: 'npm install -g @agent-qofeno/agentx-cli' },
-  { id: 'brew', label: 'Homebrew', iconClass: 'fa-solid fa-beer-mug-empty', command: 'brew tap SohailKhan0525/agentx && brew install agentx' },
-  { id: 'jsr', label: 'JSR', iconClass: 'fa-solid fa-cubes', command: 'npx jsr add @agent-qofeno/agentx-cli' },
+const installs = [
+  ['npm','npm install -g @agent-qofeno/agentx-cli','https://npmjs.com/package/@agent-qofeno/agentx-cli'],
+  ['Homebrew','brew tap SohailKhan0525/agentx && brew install agentx','https://github.com/SohailKhan0525/homebrew-agentx'],
+  ['JSR','npx jsr add @agent-qofeno/agentx-cli','https://jsr.io/@agent-qofeno/agentx-cli'],
 ]
 
-function HeroSection({ stars, version }: { stars: number | null, version: string }) {
-  const [copied, setCopied] = useState(false)
-  const heroCmd = 'npm install -g @agent-qofeno/agentx-cli'
+const faqs = [
+  ['What is AgentX?','AgentX is a terminal based AI agent for building and modifying real website projects.'],
+  ['Does it work with an existing project?','Yes. Its workflow is designed around reading the current repository before making changes.'],
+  ['Can I review the plan first?','Yes. Planning and confirmation are part of the documented workflow.'],
+  ['Which operating systems are supported?','The documentation lists Windows, macOS, and Linux.'],
+  ['Can I use local models?','The documentation includes local model setup for Ollama and LM Studio.'],
+  ['Where should I start?','Open Getting Started for the quickest path from installation to a first project.'],
+]
 
-  const copyHero = () => {
-    if (typeof navigator !== 'undefined' && navigator.clipboard) {
-      navigator.clipboard.writeText(heroCmd)
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2000)
-    }
-  }
-
-  return (
-    <div className={styles.hero}>
-      <div className={styles.heroInner}>
-        <div className={styles.heroBadge}>
-          <i className="fa-solid fa-rocket" style={{ marginRight: '8px' }} />
-          <span>Now in v{version} — Production Ready</span>
-        </div>
-        <h1 className={styles.heroTitle}>
-          The AI agent that builds<br />
-          <span className={styles.heroHighlight}>real websites</span>
-        </h1>
-        <p className={styles.heroSubtitle}>
-          Describe your website in plain English. AgentX plans, builds, deploys, and ships it.
-          Not a demo. Not an MVP. A real website, live on the internet.
-        </p>
-        <div className={styles.heroInstall} onClick={copyHero} title="Click to copy command">
-          <code className={styles.installCommand}>
-            <span>{heroCmd}</span>
-            <span className={styles.copyIndicator}>
-              {copied ? (
-                <>
-                  <i className="fa-solid fa-check" style={{ color: '#22c55e', marginRight: '6px' }} />
-                  Copied!
-                </>
-              ) : (
-                <i className="fa-regular fa-copy" />
-              )}
-            </span>
-          </code>
-        </div>
-        <div className={styles.heroActions}>
-          <Link className={styles.primaryBtn} to="/docs/intro">
-            Get Started <i className="fa-solid fa-arrow-right" style={{ marginLeft: '6px' }} />
-          </Link>
-          <Link
-            className={styles.secondaryBtn}
-            to="https://github.com/SohailKhan0525/agentx-cli"
-          >
-            <i className="fa-brands fa-github" style={{ marginRight: '8px' }} />
-            Star on GitHub {stars !== null && stars > 0 ? `(${stars})` : ''}
-          </Link>
-        </div>
-        <div className={styles.heroPlatforms}>
-          <span><i className="fa-solid fa-circle-check" style={{ marginRight: '6px' }} /> Works on</span>
-          <strong>Windows</strong>
-          <span>·</span>
-          <strong>macOS</strong>
-          <span>·</span>
-          <strong>Linux</strong>
-        </div>
-      </div>
-    </div>
-  )
+function CopyCommand({label,command,href}:{label:string;command:string;href:string}) {
+  const [copied,setCopied]=useState(false)
+  const copy=async()=>{ if(!navigator.clipboard) return; await navigator.clipboard.writeText(command); setCopied(true); window.setTimeout(()=>setCopied(false),1600) }
+  return <div className={styles.installRow}>
+    <a className={styles.installLabel} href={href} target="_blank" rel="noreferrer">{label}</a>
+    <button className={styles.codeButton} type="button" onClick={copy} aria-label={copied?'Command copied':'Copy install command'}>
+      <code>{command}</code><span>{copied?'Copied':'Copy'}</span>
+    </button>
+  </div>
 }
 
-function FeaturesSection() {
-  return (
-    <section className={styles.features}>
-      <div className={styles.sectionInner}>
-        <h2 className={styles.sectionTitle}>Like Claude Code, but for websites</h2>
-        <p className={styles.sectionSubtitle}>
-          AgentX thinks and works the same way — plans first, reads before editing,
-          uses real tools, and iterates until everything works.
-        </p>
-        <div className={styles.featureGrid}>
-          {features.map((f, i) => (
-            <div key={i} className={styles.featureCard}>
-              <div className={styles.featureIcon}>
-                <i className={f.iconClass} />
-              </div>
-              <h3>{f.title}</h3>
-              <p>{f.description}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
-
-function ProvidersSection() {
-  return (
-    <section className={styles.providers}>
-      <div className={styles.sectionInner}>
-        <h2 className={styles.sectionTitle}>Works with every AI provider</h2>
-        <div className={styles.providerList}>
-          {providers.map((p, i) => (
-            <div key={i} className={styles.providerChip}>
-              <i className={p.iconClass} style={{ marginRight: '8px' }} />
-              <span>{p.name}</span>
-            </div>
-          ))}
-        </div>
-        <p className={styles.providerNote}>
-          Including local models via Ollama, LM Studio, Jan, GPT4All, and llama.cpp.
-          Your conversations stay on your machine.
-        </p>
-      </div>
-    </section>
-  )
-}
-
-function HowItWorksSection() {
-  const steps = [
-    { num: '01', iconClass: 'fa-solid fa-comment-dots', title: 'Describe your website', desc: 'Tell AgentX what you want to build in plain English. No technical knowledge required.' },
-    { num: '02', iconClass: 'fa-solid fa-compass-drafting', title: 'AgentX plans it', desc: 'See the full plan — every page, every service, every integration — before any code is written.' },
-    { num: '03', iconClass: 'fa-solid fa-circle-check', title: 'You confirm', desc: 'Review the plan. Request changes. AgentX only builds when you say go.' },
-    { num: '04', iconClass: 'fa-solid fa-code', title: 'AgentX builds', desc: 'Every page, every API route, every integration. Real code. No placeholders.' },
-    { num: '05', iconClass: 'fa-solid fa-cloud-arrow-up', title: 'It deploys live', desc: 'Pushed to GitHub, deployed to your platform, live URL in your terminal.' },
-  ]
-
-  return (
-    <section className={styles.howItWorks}>
-      <div className={styles.sectionInner}>
-        <h2 className={styles.sectionTitle}>How it works</h2>
-        <div className={styles.steps}>
-          {steps.map((s, i) => (
-            <div key={i} className={styles.step}>
-              <div className={styles.stepNum}>{s.num}</div>
-              <div>
-                <h3>
-                  <i className={s.iconClass} style={{ marginRight: '8px', opacity: 0.75 }} />
-                  {s.title}
-                </h3>
-                <p>{s.desc}</p>
+export default function Home():React.JSX.Element {
+  return <Layout title="AgentX documentation" description="Documentation for AgentX, the terminal based AI agent for building real website projects.">
+    <main>
+      <section className={styles.hero}>
+        <div className={styles.heroInner}>
+          <div className={styles.kicker}><span className={styles.kickerDot} aria-hidden="true"/>AgentX documentation</div>
+          <div className={styles.heroGrid}>
+            <div className={styles.heroCopy}>
+              <p className={styles.overline}>BUILD FROM THE TERMINAL</p>
+              <h1 className={styles.heroTitle}>Build real websites<span className={styles.heroTitleMuted}> with an agent that can act.</span></h1>
+              <p className={styles.heroSubtitle}>AgentX plans the work, reads your repository, changes files, runs the tools you already use, and verifies the result before you ship it.</p>
+              <div className={styles.heroActions}>
+                <Link className={styles.primaryButton} to="/docs/intro">Read the docs <span aria-hidden="true">→</span></Link>
+                <a className={styles.textLink} href="https://github.com/SohailKhan0525/agentx-cli" target="_blank" rel="noreferrer">View the CLI on GitHub</a>
               </div>
             </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
-
-function InstallSection() {
-  const [copiedId, setCopiedId] = useState<string | null>(null)
-
-  const copyCode = (cmd: string, id: string) => {
-    if (typeof navigator !== 'undefined' && navigator.clipboard) {
-      navigator.clipboard.writeText(cmd)
-      setCopiedId(id)
-      setTimeout(() => setCopiedId(null), 2000)
-    }
-  }
-
-  return (
-    <section className={styles.install}>
-      <div className={styles.sectionInner}>
-        <h2 className={styles.sectionTitle}>Get started in seconds</h2>
-        <div className={styles.installGrid}>
-          {installMethods.map((m) => (
-            <div
-              key={m.id}
-              className={styles.installCard}
-              onClick={() => copyCode(m.command, m.id)}
-              title="Click to copy command"
-            >
-              <div className={styles.installCardHeader}>
-                <div className={styles.installLabel}>
-                  <i className={m.iconClass} style={{ marginRight: '8px' }} />
-                  {m.label}
-                </div>
-                <span className={styles.cardCopyTag}>
-                  {copiedId === m.id ? (
-                    <>
-                      <i className="fa-solid fa-check" style={{ color: '#22c55e', marginRight: '4px' }} />
-                      Copied!
-                    </>
-                  ) : (
-                    <>
-                      <i className="fa-regular fa-copy" style={{ marginRight: '4px' }} />
-                      Click to copy
-                    </>
-                  )}
-                </span>
+            <div className={styles.terminal} aria-label="Example AgentX terminal session">
+              <div className={styles.terminalTop}><span/><span/><span/><small>agentx</small></div>
+              <div className={styles.terminalBody}>
+                <p><span className={styles.prompt}>$</span> agentx</p>
+                <p className={styles.terminalMuted}>Tell me what you want to build.</p>
+                <p className={styles.terminalUser}>Build a marketing site for my CLI with docs, a command reference, and a clean dark theme.</p>
+                <div className={styles.terminalDivider}/>
+                <p><span className={styles.prompt}>01</span> Reading project structure</p>
+                <p><span className={styles.prompt}>02</span> Drafting implementation plan</p>
+                <p><span className={styles.prompt}>03</span> Waiting for confirmation</p>
               </div>
-              <code className={styles.installCode}>{m.command}</code>
             </div>
-          ))}
+          </div>
+          <div className={styles.proofStrip}><span>Works with your existing stack</span><span>Windows</span><span>macOS</span><span>Linux</span><span>GitHub</span></div>
         </div>
-        <p className={styles.installReq}>Requires Node.js 18 or higher</p>
-      </div>
-    </section>
-  )
-}
+      </section>
 
-function CTASection({ stars }: { stars: number | null }) {
-  return (
-    <section className={styles.cta}>
-      <div className={styles.sectionInner}>
-        <h2>Ready to ship your website?</h2>
-        <p>Install AgentX and describe what you want to build.</p>
-        <div className={styles.ctaActions}>
-          <Link className={styles.primaryBtn} to="/docs/intro">
-            Read the docs <i className="fa-solid fa-arrow-right" style={{ marginLeft: '6px' }} />
-          </Link>
-          <Link
-            className={styles.secondaryBtn}
-            to="https://github.com/SohailKhan0525/agentx-cli"
-          >
-            <i className="fa-brands fa-github" style={{ marginRight: '8px' }} />
-            Star on GitHub {stars !== null && stars > 0 ? `(${stars})` : ''}
-          </Link>
-        </div>
-      </div>
-    </section>
-  )
-}
+      <section className={styles.tagline}><div className={styles.narrow}><p className={styles.taglineText}>{'From request to verified result, the terminal stays in the loop.'.split(' ').map((word,i)=><span key={word+i} className={styles.taglineWord}>{word}&nbsp;</span>)}</p></div></section>
 
-export default function Home(): React.JSX.Element {
-  const {siteConfig} = useDocusaurusContext()
-  const [stars, setStars] = useState<number | null>(null)
-  const [version, setVersion] = useState<string>('2.1.0')
+      <section className={styles.capabilities} id="capabilities"><div className={styles.sectionShell}>
+        <div className={styles.sectionIntro}><p className={styles.eyebrow}>WHY AGENTX</p><h2>Less guessing. More visible work.</h2><p>Plan, inspect, act, verify, then keep working in the project it helped build.</p></div>
+        <div className={styles.capabilityGrid}>{capabilities.map(([n,t,d])=><article key={n} className={styles.capability}><span className={styles.capabilityNumber}>{n}</span><h3>{t}</h3><p>{d}</p></article>)}</div>
+      </div></section>
 
-  useEffect(() => {
-    // 1. Fetch real-time GitHub Stars
-    fetch('https://api.github.com/repos/SohailKhan0525/agentx-cli')
-      .then(res => res.json())
-      .then(data => {
-        if (data && typeof data.stargazers_count === 'number') {
-          setStars(data.stargazers_count)
-        }
-      })
-      .catch(() => {})
+      <section className={styles.workflow} id="workflow"><div className={styles.sectionShell}>
+        <div className={styles.workflowIntro}><p className={styles.eyebrow}>HOW IT WORKS</p><h2>A repeatable loop from idea to repo.</h2></div>
+        <div className={styles.workflowList}>{workflow.map(([n,t,d])=><article key={n} className={styles.workflowRow}><span className={styles.workflowNumber}>{n}</span><div><h3>{t}</h3><p>{d}</p></div></article>)}</div>
+      </div></section>
 
-    // 2. Fetch real-time npm version
-    fetch('https://registry.npmjs.org/@agent-qofeno/agentx-cli/latest')
-      .then(res => res.json())
-      .then(data => {
-        if (data && data.version) {
-          setVersion(data.version)
-        }
-      })
-      .catch(() => {})
-  }, [])
+      <section className={styles.install} id="install"><div className={styles.sectionShell}><div className={styles.installGrid}>
+        <div><p className={styles.eyebrow}>START HERE</p><h2>Install once. Keep your workflow.</h2><p>Use the package manager that fits your setup, then open the getting started guide.</p><Link className={styles.textLinkStrong} to="/docs/intro">Open Getting Started →</Link></div>
+        <div className={styles.installPanel}>{installs.map(([l,c,h])=><CopyCommand key={l} label={l} command={c} href={h}/>)}</div>
+      </div></div></section>
 
-  return (
-    <Layout
-      title={siteConfig.title}
-      description="The AI agent that builds production-ready websites from your terminal"
-    >
-      <HeroSection stars={stars} version={version} />
-      <FeaturesSection />
-      <ProvidersSection />
-      <HowItWorksSection />
-      <InstallSection />
-      <CTASection stars={stars} />
-    </Layout>
-  )
+      <section className={styles.faq} id="faq"><div className={styles.sectionShell}>
+        <div className={styles.sectionIntro}><p className={styles.eyebrow}>FAQ</p><h2>Answers before you open the terminal.</h2></div>
+        <div className={styles.faqGrid}>{faqs.map(([q,a])=><details key={q} className={styles.faqItem}><summary>{q}</summary><p>{a}</p></details>)}</div>
+      </div></section>
+
+      <section className={styles.finalCta}><div className={styles.sectionShell}><div className={styles.ctaCard}>
+        <div><p className={styles.eyebrow}>READY WHEN YOU ARE</p><h2>Start with the docs, then let AgentX touch the repo.</h2><p>Read the quick start, install the CLI, and run your first task with a workflow you can inspect.</p></div>
+        <Link className={styles.primaryButton} to="/docs/intro">Open the quick start <span aria-hidden="true">→</span></Link>
+      </div></div></section>
+    </main>
+  </Layout>
 }
