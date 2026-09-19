@@ -1,30 +1,28 @@
 ---
-sidebar_position: 3
-title: AI Providers
+sidebar_position: 1
+title: AI providers
 description: Configure cloud and local model providers for AgentX.
 ---
 
 # AI providers
 
-AgentX can work with cloud providers or local model runners. Model names and authentication options depend on the provider account you use.
+AgentX can work with hosted model providers or local model runners.
 
-## Provider matrix
-
-| Provider | Example models | Typical authentication |
+| Provider | Example credential | Notes |
 | --- | --- | --- |
-| **Anthropic** | Claude models | ANTHROPIC_API_KEY |
-| **OpenAI** | GPT and reasoning models | OPENAI_API_KEY |
-| **Google** | Gemini models | GEMINI_API_KEY |
-| **GitHub Copilot** | Copilot-supported models | GitHub authentication |
-| **Groq** | Llama and other supported models | GROQ_API_KEY |
-| **Ollama** | Local coding models | Local API |
-| **LM Studio** | Local GGUF models | Local API |
+| Anthropic | `ANTHROPIC_API_KEY` | Claude family |
+| OpenAI | `OPENAI_API_KEY` | GPT and reasoning models |
+| Google | `GEMINI_API_KEY` | Gemini family |
+| Groq | `GROQ_API_KEY` | Hosted open models |
+| GitHub Copilot | GitHub authentication | Copilot supported models |
+| Ollama | Local API | Local inference |
+| LM Studio | Local API | Local inference |
 
-Model availability changes over time. Treat the provider's current documentation as the source of truth for model names and limits.
+Provider model names, limits, and retention policies change over time. Use the provider's current documentation as the source of truth.
 
 ## Environment variables
 
-A typical shell configuration looks like:
+A typical shell setup looks like:
 
 ```bash
 export ANTHROPIC_API_KEY="your-key"
@@ -33,9 +31,11 @@ export GEMINI_API_KEY="your-key"
 export GROQ_API_KEY="your-key"
 ```
 
-Only configure the credentials for providers you actually use.
+Configure only the variables you need.
 
-## Switching during a session
+## During a session
+
+The command reference includes provider and model controls:
 
 ```text
 /provider
@@ -43,8 +43,8 @@ Only configure the credentials for providers you actually use.
 /cost
 ```
 
-See [Commands & Shortcuts](/docs/commands) for the command reference.
+See [Commands](./commands) for the full list.
 
-## Local providers
+## Choosing local inference
 
-For an offline or local workflow, see [Local Models](/docs/local-models).
+If you want model inference to remain on your machine or local network, see [Local Models](./local-models).
