@@ -17,7 +17,7 @@ AgentX is a terminal tool. Pick the distribution channel that fits your machine.
 ## npm
 
 ```bash
-npm install -g @agent-qofeno/agentx-cli
+npm i -g @agent-qofeno/agentx-cli@latest
 ```
 
 ## Homebrew
