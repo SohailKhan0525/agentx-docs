@@ -1,67 +1,55 @@
 ---
 sidebar_position: 2
 title: Installation
+description: Install AgentX on macOS, Linux, or Windows.
 ---
 
-# Installation & Setup
+# Installation
 
-AgentX is distributed across all major package ecosystems for maximum portability on macOS, Linux, and Windows.
+AgentX is distributed through npm, Homebrew, JSR, and GitHub Packages.
 
----
+## Requirements
 
-## Prerequisites
+- **Node.js:** 18.0.0 or newer. Node 20+ is recommended.
+- **Terminal:** bash, zsh, fish, PowerShell, Windows Terminal, or another modern shell.
+- **Credentials:** an API key for a supported provider, or a local model runner such as Ollama or LM Studio.
 
-- **Node.js**: Version `18.0.0` or higher (Node 20+ recommended)
-- **Terminal**: Any modern shell (bash, zsh, fish, PowerShell, Windows Terminal)
-- **AI Credentials**: API key from a supported provider, or a local model runner (Ollama / LM Studio)
-
----
-
-## Installation Methods
-
-### Option 1: npm (Recommended)
+## npm
 
 ```bash
 npm install -g @agent-qofeno/agentx-cli
 ```
 
-### Option 2: Homebrew (macOS & Linux)
+## Homebrew
+
+On macOS and Linux:
 
 ```bash
 brew tap SohailKhan0525/agentx
 brew install agentx
 ```
 
-### Option 3: JSR (Deno & Modern Runtimes)
+## JSR
 
 ```bash
 npx jsr add @agent-qofeno/agentx-cli
 ```
 
-### Option 4: GitHub Packages
+## GitHub Packages
 
 ```bash
 npm install -g @SohailKhan0525/agentx-cli --registry https://npm.pkg.github.com
 ```
 
----
-
-## Verify Installation
-
-Check that AgentX is installed and accessible in your PATH:
+## Verify
 
 ```bash
 agentx --version
-```
-
----
-
-## First Run & Authentication
-
-Launch the CLI:
-
-```bash
 agentx
 ```
 
-On first launch, AgentX will prompt you to select your preferred AI provider. Keys are securely stored in your OS native keychain (Windows Credential Manager, macOS Keychain, or Linux Secret Service) and are never written to unencrypted configuration files.
+## First run
+
+On first launch, configure the AI provider you want to use. Keep credentials in your normal environment or secure credential-management workflow; do not commit secrets to a repository.
+
+For local inference, continue to [Local Models](/docs/local-models).
