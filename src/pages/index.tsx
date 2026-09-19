@@ -30,7 +30,6 @@ export default function Home():React.JSX.Element{
  <main>
   <section className={styles.hero}>
    <div className={styles.shell}>
-    <nav className={styles.miniNav} aria-label="Homepage"><Link to="/" className={styles.logo}><img src="/img/agentx-mark.svg" alt="" />AgentX</Link><div><Link to="/docs/intro">Docs</Link><a href="https://github.com/SohailKhan0525/agentx-cli">GitHub</a></div></nav>
     <div className={styles.heroGrid}>
       <div>
        <p className={styles.kicker}>TERMINAL AGENT · OPEN WORKFLOW</p>

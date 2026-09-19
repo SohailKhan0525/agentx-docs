@@ -26,7 +26,7 @@ const config:Config={
       {name:'keywords',content:'AgentX, AI coding agent, terminal agent, developer tools, local models'},
       {name:'theme-color',content:'#f4f3ee'}
     ],
-    colorMode:{defaultMode:'light',disableSwitch:false,respectPrefersColorScheme:false},
+    colorMode:{defaultMode:'light',disableSwitch:true,respectPrefersColorScheme:false},
     navbar:{
       title:'AgentX',
       logo:{alt:'AgentX mark',src:'img/agentx-mark.svg'},
